@@ -1,4 +1,5 @@
 
+import 'package:atomic_design/pages/atomic_loginpage.dart';
 import 'package:flutter/material.dart';
 
 
@@ -32,7 +33,7 @@ class AnotherPageShowcase extends StatelessWidget {
       appBar: AppBar(title: const Text("Páginas"),
         backgroundColor: const Color.fromRGBO(249, 249, 249, 1),
       ),
-      body: AtomicLoginPage(),
+      body: const AtomicLoginPage(),
     );
   }
 
