@@ -1,12 +1,29 @@
+/**
+ * Un campo de formulario de texto personalizable con una etiqueta.
+ *
+ * Este widget proporciona un campo de entrada de texto con una etiqueta y propiedades opcionales
+ * para ocultar el texto (por ejemplo, para contraseñas), personalizar el tipo de teclado y validar la entrada.
+ */
 import 'package:flutter/material.dart';
 
+/// Un widget con estado que representa un campo de formulario de texto con etiqueta.
 class AtomicTextFormFieldWithLabel extends StatefulWidget {
+  /// El texto de la etiqueta que se muestra encima del campo de entrada.
   final String label;
-  final TextEditingController? controller;
-  final bool obscureText; // Para contraseñas
-  final TextInputType keyboardType; // Para personalizar el tipo de input
-  final String? Function(String?)? validator; // Función de validación
 
+  /// Un controlador opcional para gestionar la entrada del campo de texto.
+  final TextEditingController? controller;
+
+  /// Indica si el campo de texto debe ocultar el texto ingresado (útil para contraseñas).
+  final bool obscureText;
+
+  /// El tipo de teclado que se utilizará para la entrada de texto.
+  final TextInputType keyboardType;
+
+  /// Una función opcional para validar el formulario.
+  final String? Function(String?)? validator;
+
+  /// Crea una instancia de [AtomicTextFormFieldWithLabel].
   const AtomicTextFormFieldWithLabel({
     super.key,
     required this.label,
@@ -57,7 +74,7 @@ class _AtomicTextFormFieldWithLabelState extends State<AtomicTextFormFieldWithLa
             controller: _internalController,
             obscureText: widget.obscureText,
             keyboardType: widget.keyboardType,
-            validator: widget.validator, // Se usa la función de validación
+            validator: widget.validator,
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),

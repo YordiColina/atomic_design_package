@@ -1,14 +1,32 @@
+/**
+ * Página de inicio con listado de productos.
+ *
+ * Este widget muestra una pantalla de inicio con una lista de tarjetas de productos.
+ * Si no se proporcionan datos externos, se usa una lista de productos simulados.
+ */
+
 import 'package:flutter/material.dart';
 import '../atoms/atomic_text.dart';
 import '../templates/atomic_card_list_template.dart';
 import '../molecules/atomic_icon_with_text.dart';
 
+/// Página de inicio de la aplicación.
+///
+/// Muestra un listado de productos en tarjetas organizadas en una lista.
+/// Puede recibir una lista dinámica de productos o utilizar datos simulados si no se proporciona.
 class AtomicHomePage extends StatelessWidget {
+  /// Lista de productos que se mostrarán en la página.
+  /// Si es `null`, se usarán datos predeterminados.
   final dynamic items;
+
+  /// Constructor de [AtomicHomePage].
+  ///
+  /// - [items]: Lista de productos opcional. Si no se proporciona, se usan datos simulados.
   const AtomicHomePage({super.key, this.items});
 
   @override
   Widget build(BuildContext context) {
+    /// 📌 Lista de datos simulados para los productos en caso de que `items` sea `null`.
     final List<Map<String, dynamic>> dataItems = [
       {
         "titulo": "Producto 1",
@@ -30,14 +48,15 @@ class AtomicHomePage extends StatelessWidget {
       },
     ];
 
-    // 📌 Lista de datos simulados para los elementos de la card
-
-
     return Scaffold(
       backgroundColor: const Color.fromRGBO(249, 249, 249, 1),
       appBar: AppBar(
-        title: const AtomicText(text:"Inicio",size:  TextSize.large,
-          fontWeight: FontWeight.bold, textAlign: TextAlign.center,),
+        title: const AtomicText(
+          text: "Inicio",
+          size: TextSize.large,
+          fontWeight: FontWeight.bold,
+          textAlign: TextAlign.center,
+        ),
         centerTitle: true,
         backgroundColor: const Color.fromRGBO(249, 249, 249, 1),
       ),

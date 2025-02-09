@@ -1,7 +1,7 @@
 name: atomic_design
 description: "A package for atomic design in flutter"
 version: 0.0.1
-homepage:
+homepage: https://github.com/YordiColina/atomic_design_package
 
 environment:
   sdk: ^3.5.3
