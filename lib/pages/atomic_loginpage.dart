@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../templates/atomic_login_template.dart';
 
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class AtomicLoginPage extends StatelessWidget {
+  const AtomicLoginPage({super.key});
 
   void _handleLogin(String email, String password) {
     // Aquí puedes implementar la autenticación con Firebase u otro backend
@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: TemplateLogin(
+      body: AtomicTemplateLogin(
         onLogin: _handleLogin,
       ),
     );

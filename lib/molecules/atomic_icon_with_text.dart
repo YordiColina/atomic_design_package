@@ -6,14 +6,15 @@ class AtomicIconText extends StatelessWidget {
   final IconTextSize size;
   final String text;
   final IconData? icon;
-  final Color color;
+  final Color iconColor;
+  final Color textColor;
 
   const AtomicIconText({
     super.key,
     required this.size,
     required this.text,
     this.icon,
-    this.color = Colors.blue,
+    required this.iconColor, required this.textColor,
   });
 
   double _getIconSize() {
@@ -36,12 +37,12 @@ class AtomicIconText extends StatelessWidget {
         Icon(
           _getDefaultIcon(),
           size: _getIconSize(),
-          color: color,
+          color: iconColor,
         ),
         SizedBox(height: 4),
         Text(
           text,
-          style: TextStyle(fontSize: _getFontSize(), color: color, fontWeight: FontWeight.w500),
+          style: TextStyle(fontSize: _getFontSize(), color: textColor, fontWeight: FontWeight.w500),
           textAlign: TextAlign.center,
         ),
       ],

@@ -45,8 +45,9 @@ class AtomicButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         padding: EdgeInsets.symmetric(vertical: _getPadding(), horizontal: _getPadding() * 2),
         textStyle: TextStyle(fontSize: _getFontSize()),
+        backgroundColor: const Color.fromRGBO(158, 123, 187, 1.0)
       ),
-      child: Text(label),
+      child: Text(label, style: const TextStyle(color: Colors.white)),
     );
   }
 }

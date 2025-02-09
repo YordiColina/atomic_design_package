@@ -1,25 +1,32 @@
 import 'package:flutter/material.dart';
 import '../molecules/atomic_icon_with_text.dart';
-import '../molecules/atomic_texfield_with_label.dart';
+import '../organism/Atomic_form.dart';
 
 
-class TemplateLogin extends StatefulWidget {
+class AtomicTemplateLogin extends StatefulWidget {
   final void Function(String email, String password) onLogin;
 
-  const TemplateLogin({super.key, required this.onLogin});
+  const AtomicTemplateLogin({super.key, required this.onLogin});
 
   @override
-  _TemplateLoginState createState() => _TemplateLoginState();
+  _AtomicTemplateLoginState createState() => _AtomicTemplateLoginState();
 }
 
-class _TemplateLoginState extends State<TemplateLogin> {
+class _AtomicTemplateLoginState extends State<AtomicTemplateLogin> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   void _submit() {
-    if (_formKey.currentState!.validate()) {
-      widget.onLogin(_emailController.text, _passwordController.text);
+    if (_formKey.currentState?.validate() ?? false) {
+      final email = _emailController.text.trim();
+      final password = _passwordController.text.trim();
+
+      if (email.isNotEmpty && password.isNotEmpty) {
+        widget.onLogin(email, password);
+      } else {
+        print("Error: correo o contraseña vacíos");
+      }
     }
   }
 
@@ -28,8 +35,8 @@ class _TemplateLoginState extends State<TemplateLogin> {
     final double screenWidth = MediaQuery.of(context).size.width;
     final bool isWideScreen = screenWidth > 600;
 
-    return Scaffold(
-      body: Center(
+    return
+     Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: isWideScreen ? 80 : 24, vertical: 32),
           child: Column(
@@ -40,69 +47,23 @@ class _TemplateLoginState extends State<TemplateLogin> {
                 size: IconTextSize.medium,
                 text: "Bienvenido",
                 icon: Icons.lock,
-                color: Colors.blueAccent,
+                iconColor: Colors.blueAccent,
+                textColor: Colors.black,
               ),
               const SizedBox(height: 24),
 
               // 📌 Formulario
-              Form(
+              AtomicForm(
                 key: _formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    AtomicTextFormFieldWithLabel(
-                      label: "Correo electrónico",
-                      controller: _emailController,
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "Ingrese su correo";
-                        }
-                        if (!RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$").hasMatch(value)) {
-                          return "Correo inválido";
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 16),
-
-                    AtomicTextFormFieldWithLabel(
-                      label: "Contraseña",
-                      controller: _passwordController,
-                      obscureText: true,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "Ingrese su contraseña";
-                        }
-                        if (value.length < 6) {
-                          return "Debe tener al menos 6 caracteres";
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 24),
-
-                    // 📌 Botón de inicio de sesión
-                    ElevatedButton(
-                      onPressed: _submit,
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                      child: const Text(
-                        "Iniciar sesión",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
-                ),
+                fieldCount: 3,
+                onSubmit: (values ) {  },
+                buttonText: 'Iniciar sesión',
+                labels: const ['Nombre', 'Contraseña', 'Correo'],
               ),
             ],
           ),
         ),
-      ),
-    );
+      );
+
   }
 }

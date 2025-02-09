@@ -6,12 +6,13 @@ class AtomicText extends StatelessWidget {
   final String text;
   final TextSize size;
   final Color? color;
+  final TextAlign? textAlign;
 
   const AtomicText({
     super.key,
     required this.text,
     this.size = TextSize.medium,
-    this.color, required FontWeight fontWeight, required TextAlign textAlign,
+    this.color, required FontWeight fontWeight,  this.textAlign,
   });
 
   TextStyle _getTextStyle(BuildContext context) {
