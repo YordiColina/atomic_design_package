@@ -17,7 +17,7 @@ Agrega el paquete en tu archivo `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  atomic_design_package:
+  atomic_design:
     git:
       url: https://github.com/YordiColina/atomic_design_package.git
 ```
