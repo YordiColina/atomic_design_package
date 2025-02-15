@@ -26,13 +26,17 @@ class AtomicButton extends StatelessWidget {
   /// El tamaño del botón, que afecta el padding y el tamaño de fuente.
   /// Por defecto, usa [ButtonSize.medium].
   final ButtonSize size;
+  /// El color del botón.
+  final Color? color;
+/// El color del texto del botón
+  final Color? textColor;
 
   /// Crea una instancia de [AtomicButton].
   const AtomicButton({
     super.key,
     required this.label,
     required this.onPressed,
-    this.size = ButtonSize.medium,
+    this.size = ButtonSize.medium, this.color, this.textColor,
   });
 
   /// Devuelve el valor de padding basado en el tamaño del botón.
@@ -71,9 +75,9 @@ class AtomicButton extends StatelessWidget {
           horizontal: _getPadding() * 2,
         ),
         textStyle: TextStyle(fontSize: _getFontSize()),
-        backgroundColor: const Color.fromRGBO(158, 123, 187, 1.0),
+        backgroundColor: color ?? const Color.fromRGBO(158, 123, 187, 1.0),
       ),
-      child: Text(label, style: const TextStyle(color: Colors.white)),
+      child: Text(label, style: TextStyle(color: textColor ?? Colors.white)),
     );
   }
 }

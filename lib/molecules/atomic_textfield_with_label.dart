@@ -6,6 +6,8 @@
  */
 import 'package:flutter/material.dart';
 
+import '../atoms/atomic_text.dart';
+
 /// Un widget con estado que representa un campo de formulario de texto con etiqueta.
 class AtomicTextFormFieldWithLabel extends StatefulWidget {
   /// El texto de la etiqueta que se muestra encima del campo de entrada.
@@ -22,6 +24,16 @@ class AtomicTextFormFieldWithLabel extends StatefulWidget {
 
   /// Una función opcional para validar el formulario.
   final String? Function(String?)? validator;
+  /// El color del texto del label.
+  final Color? textColor;
+
+  /// El tamaño del texto, que afecta su estilo.
+  /// Por defecto, usa [TextSize.medium].
+  final TextSize? size;
+
+  /// El peso de la fuente del texto.
+  final FontWeight? fontWeight;
+
 
   /// Crea una instancia de [AtomicTextFormFieldWithLabel].
   const AtomicTextFormFieldWithLabel({
@@ -30,7 +42,7 @@ class AtomicTextFormFieldWithLabel extends StatefulWidget {
     this.controller,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
-    this.validator,
+    this.validator, this.textColor, this.size,  this.fontWeight,
   });
 
   @override
@@ -61,13 +73,12 @@ class _AtomicTextFormFieldWithLabelState extends State<AtomicTextFormFieldWithLa
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            widget.label,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Color.fromRGBO(102, 102, 102, 1),
-            ),
+          AtomicText(
+            text: widget.label,
+            fontWeight: widget.fontWeight ?? FontWeight.w400,
+            color: widget.textColor,
+            size: widget.size ?? TextSize.medium,
+
           ),
           const SizedBox(height: 6),
           TextFormField(

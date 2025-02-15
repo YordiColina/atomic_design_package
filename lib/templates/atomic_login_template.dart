@@ -7,6 +7,7 @@
  */
 
 import 'package:flutter/material.dart';
+import '../atoms/atomic_text.dart';
 import '../molecules/atomic_icon_with_text.dart';
 import '../organism/Atomic_form.dart';
 
@@ -17,14 +18,41 @@ import '../organism/Atomic_form.dart';
 class AtomicTemplateLogin extends StatefulWidget {
   /// Función que se ejecuta al enviar el formulario con el email y la contraseña.
   final void Function(String email, String password) onLogin;
+  /// Ícono que se muestra en la parte superior de la plantilla.
   final IconData icon;
+  /// Título que se muestra en la parte superior de la plantilla.
   final String title;
+  /// Etiquetas de los campos del formulario.
   final List<String> labels;
+  /// Texto del botón de envío del formulario.
   final String buttonText;
+  /// Color del ícono.
+  final Color? iconColor;
+  /// Color del texto.
+  final Color? titleColor;
+  /// Color del botón.
+  final Color? buttonColor;
+  /// Color del texto del botón.
+  final Color? buttonTextColor;
+  /// Número de campos en el formulario.
+  final int fieldsNumber;
+
+  /// El color del texto del label.
+  final Color? textLabelColor;
+
+  /// El tamaño del texto, que afecta su estilo.
+  /// Por defecto, usa [TextSize.medium].
+  final TextSize? sizeOfLabelText;
+
+  /// El peso de la fuente del texto.
+  final FontWeight? fontWeightLabelText;
 
 
   /// Constructor de [AtomicTemplateLogin].
-  const AtomicTemplateLogin({super.key, required this.onLogin, required this.icon, required this.title, required this.labels, required this.buttonText});
+  const AtomicTemplateLogin({super.key, required this.onLogin, required this.icon,
+    required this.title, required this.labels, required this.buttonText,
+    this.titleColor, this.iconColor,  this.buttonColor, this.buttonTextColor, required this.fieldsNumber,
+    this.textLabelColor, this.sizeOfLabelText, this.fontWeightLabelText});
 
   @override
   _AtomicTemplateLoginState createState() => _AtomicTemplateLoginState();
@@ -73,18 +101,20 @@ class _AtomicTemplateLoginState extends State<AtomicTemplateLogin> {
               size: IconTextSize.medium,
               text: widget.title,
               icon: widget.icon,
-              iconColor: Colors.blueAccent,
-              textColor: Colors.black,
+              iconColor: widget.iconColor ?? Colors.blueAccent,
+              textColor: widget.titleColor ?? Colors.black,
             ),
             const SizedBox(height: 24),
 
             // 📌 Formulario de inicio de sesión
             AtomicForm(
               key: _formKey,
-              fieldCount: 2,
+              fieldCount: widget.fieldsNumber,
               onSubmit: (values) {},
               buttonText: widget.buttonText,
               labels: widget.labels,
+              buttonColor: widget.buttonColor,
+              buttonTextColor: widget.buttonTextColor,
             ),
           ],
         ),

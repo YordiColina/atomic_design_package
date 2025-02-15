@@ -18,12 +18,28 @@ class AtomicTemplateRegister extends StatelessWidget {
   ///
   /// Recibe un `Map<String, String>` con los valores ingresados en cada campo.
   final void Function(Map<String, String>) onRegister;
-
   /// Lista de etiquetas para los campos del formulario.
   final List<String> labels;
-
   /// Texto del botón de registro.
   final String buttonText;
+  /// Color del texto.
+  final Color? textColor;
+  /// Color del botón.
+  final Color? buttonColor;
+  /// Color del texto del botón.
+  final Color? buttonTextColor;
+  /// Número de campos en el formulario.
+  final int fieldsNumber;
+
+  /// El color del texto del label.
+  final Color? textLabelColor;
+
+  /// El tamaño del texto, que afecta su estilo.
+  /// Por defecto, usa [TextSize.medium].
+  final TextSize? sizeOfLabelText;
+
+  /// El peso de la fuente del texto.
+  final FontWeight? fontWeightLabelText;
 
   /// Constructor de [AtomicTemplateRegister].
   ///
@@ -35,6 +51,10 @@ class AtomicTemplateRegister extends StatelessWidget {
     required this.onRegister,
     required this.labels,
     required this.buttonText,
+    this.textColor,
+    this.buttonColor,
+    this.buttonTextColor,
+    required this.fieldsNumber, this.textLabelColor, this.sizeOfLabelText, this.fontWeightLabelText,
   });
 
   @override
@@ -56,10 +76,12 @@ class AtomicTemplateRegister extends StatelessWidget {
 
             // 📌 Formulario dinámico
             AtomicForm(
-              fieldCount: labels.length, // Número de campos basado en la lista de etiquetas
+              fieldCount: fieldsNumber, // Número de campos basado en la lista de etiquetas
               onSubmit: onRegister, // Callback que maneja el registro
               labels: labels, // Etiquetas de los campos
-              buttonText: buttonText, // Texto del botón
+              buttonText: buttonText,// Texto del botón
+              buttonColor: buttonColor,
+              buttonTextColor: buttonTextColor,
             ),
           ],
         ),

@@ -6,6 +6,7 @@
  */
 
 import 'package:flutter/material.dart';
+import '../atoms/atomic_text.dart';
 import '../templates/atomic_login_template.dart';
 
 /// Página de inicio de sesión.
@@ -25,14 +26,35 @@ class AtomicLoginPage extends StatelessWidget {
   final String title;
   /// Etiquetas de los campos de texto.
   ///   Ejemplo: "Correo electrónico"
+  final Color? titleColor;
   final List<String> labels;
   /// Texto del botón de inicio de sesión.
   final String buttonText;
 
+  /// Color del botón.
+  final Color? buttonColor;
+  /// Color del texto del botón.
+  final Color? buttonTextColor;
+  /// Número de campos de texto.
+  final int fieldsNumber;
+
+  /// El color del texto del label.
+  final Color? textColor;
+
+  /// El tamaño del texto, que afecta su estilo.
+  /// Por defecto, usa [TextSize.medium].
+  final TextSize? size;
+
+  /// El peso de la fuente del texto.
+  final FontWeight? fontWeight;
+
   /// Constructor de [AtomicLoginPage].
   ///
   /// - [onLogin] es obligatorio y maneja la lógica de autenticación.
-  const AtomicLoginPage({super.key, required this.onLogin, required this.icon, required this.title, required this.labels, required this.buttonText});
+  const AtomicLoginPage({super.key, required this.onLogin, required this.icon,
+    required this.title, required this.labels, required this.buttonText,
+     this.buttonColor, this.buttonTextColor, this.titleColor, required this.fieldsNumber,
+    this.textColor, this.size, this.fontWeight});
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +65,10 @@ class AtomicLoginPage extends StatelessWidget {
         title: title,
         labels: labels,
         buttonText: buttonText,
+        buttonColor: buttonColor,
+        buttonTextColor: buttonTextColor,
+        titleColor: titleColor,
+        fieldsNumber: fieldsNumber,
       ),
     );
   }

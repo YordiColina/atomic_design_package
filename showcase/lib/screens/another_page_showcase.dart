@@ -42,7 +42,7 @@ class AnotherPageShowcase extends StatelessWidget {
       ///
       /// Se pasa la función `_handleLogin` a la página de inicio de sesión.
       body: AtomicLoginPage(onLogin: _handleLogin, icon: Icons.person,title: "Iniciar Sesión",
-      labels: ["Correo Electrónico", "Contraseña"], buttonText: 'Iniciar Sesión',
+      labels: ["Correo Electrónico", "Contraseña"], buttonText: 'Iniciar Sesión', fieldsNumber: 2,
       ),
     );
   }

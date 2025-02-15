@@ -87,7 +87,7 @@ class TemplatesShowcase extends StatelessWidget {
               ///
               /// Formulario de inicio de sesión con función `onLogin`.
               AtomicTemplateLogin(onLogin: onLogin, buttonText: "Iniciar sesión",
-                labels: ["Correo", "Contraseña"], icon: Icons.person, title: 'Inicio de sesión',
+                labels: ["Correo", "Contraseña"], icon: Icons.person, title: 'Inicio de sesión', fieldsNumber: 2,
 
               ),
 
@@ -109,8 +109,9 @@ class TemplatesShowcase extends StatelessWidget {
                 onRegister: (Map<String, String> data) {
                   print(data);
                 },
-                labels: ["Nombre", "Email", "Contraseña"],
-                buttonText: "Registrar",
+                labels: const ["Nombre", "Email", "Contraseña"],
+                buttonText: "Registrar", fieldsNumber: 3,
+
               ),
             ],
           ),

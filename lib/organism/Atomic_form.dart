@@ -7,6 +7,7 @@
 
 import 'package:atomic_design/atoms/Atomic_button.dart';
 import 'package:flutter/material.dart';
+import '../atoms/atomic_text.dart';
 import '../molecules/atomic_textfield_with_label.dart';
 
 /// Un formulario dinámico que permite capturar datos de múltiples campos.
@@ -20,6 +21,23 @@ class AtomicForm extends StatefulWidget {
   /// Etiquetas asociadas a cada campo de entrada.
   final List<String> labels;
 
+  /// Color del botón.
+  final Color? buttonColor;
+
+  /// Color del texto del botón.
+  final Color? buttonTextColor;
+
+  /// El color del texto del label.
+  final Color? textColor;
+
+  /// El tamaño del texto, que afecta su estilo.
+  /// Por defecto, usa [TextSize.medium].
+  final TextSize? size;
+
+  /// El peso de la fuente del texto.
+  final FontWeight? fontWeight;
+
+
   /// Función de callback que se ejecuta al enviar el formulario.
   ///
   /// Retorna un `Map<String, String>` con las etiquetas como claves y los valores ingresados como datos.
@@ -31,7 +49,7 @@ class AtomicForm extends StatefulWidget {
     required this.fieldCount,
     required this.onSubmit,
     required this.buttonText,
-    required this.labels,
+    required this.labels, this.buttonColor, this.buttonTextColor, this.textColor, this.size, this.fontWeight,
   });
 
   @override
@@ -102,6 +120,8 @@ class _AtomicFormState extends State<AtomicForm> {
             AtomicButton(
               onPressed: _submitForm,
               label: widget.buttonText,
+              color: widget.buttonColor,
+              textColor: widget.buttonTextColor,
             ),
           ],
         ),
