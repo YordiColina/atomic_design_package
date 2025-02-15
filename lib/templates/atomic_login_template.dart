@@ -76,10 +76,10 @@ class _AtomicTemplateLoginState extends State<AtomicTemplateLogin> {
             // 📌 Formulario de inicio de sesión
             AtomicForm(
               key: _formKey,
-              fieldCount: 3,
+              fieldCount: 2,
               onSubmit: (values) {},
               buttonText: 'Iniciar sesión',
-              labels: const ['Nombre', 'Contraseña', 'Correo'],
+              labels: const ['Contraseña', 'Correo'],
             ),
           ],
         ),
