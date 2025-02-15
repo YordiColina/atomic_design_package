@@ -17,9 +17,14 @@ import '../organism/Atomic_form.dart';
 class AtomicTemplateLogin extends StatefulWidget {
   /// Función que se ejecuta al enviar el formulario con el email y la contraseña.
   final void Function(String email, String password) onLogin;
+  final IconData icon;
+  final String title;
+  final List<String> labels;
+  final String buttonText;
+
 
   /// Constructor de [AtomicTemplateLogin].
-  const AtomicTemplateLogin({super.key, required this.onLogin});
+  const AtomicTemplateLogin({super.key, required this.onLogin, required this.icon, required this.title, required this.labels, required this.buttonText});
 
   @override
   _AtomicTemplateLoginState createState() => _AtomicTemplateLoginState();
@@ -64,10 +69,10 @@ class _AtomicTemplateLoginState extends State<AtomicTemplateLogin> {
           mainAxisSize: MainAxisSize.min,
           children: [
             // 📌 Ícono con título centrado
-            const AtomicIconText(
+         AtomicIconText(
               size: IconTextSize.medium,
-              text: "Bienvenido",
-              icon: Icons.lock,
+              text: widget.title,
+              icon: widget.icon,
               iconColor: Colors.blueAccent,
               textColor: Colors.black,
             ),
@@ -78,8 +83,8 @@ class _AtomicTemplateLoginState extends State<AtomicTemplateLogin> {
               key: _formKey,
               fieldCount: 2,
               onSubmit: (values) {},
-              buttonText: 'Iniciar sesión',
-              labels: const ['Contraseña', 'Correo'],
+              buttonText: widget.buttonText,
+              labels: widget.labels,
             ),
           ],
         ),

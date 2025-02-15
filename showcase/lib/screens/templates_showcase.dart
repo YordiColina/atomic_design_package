@@ -86,7 +86,10 @@ class TemplatesShowcase extends StatelessWidget {
               /// 📌 Ejemplo de `AtomicTemplateLogin`
               ///
               /// Formulario de inicio de sesión con función `onLogin`.
-              AtomicTemplateLogin(onLogin: onLogin),
+              AtomicTemplateLogin(onLogin: onLogin, buttonText: "Iniciar sesión",
+                labels: ["Correo", "Contraseña"], icon: Icons.person, title: 'Inicio de sesión',
+
+              ),
 
               const SizedBox(height: 20),
               const Divider(thickness: 2, color: Colors.black),

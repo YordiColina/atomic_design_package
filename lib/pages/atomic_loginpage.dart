@@ -18,17 +18,31 @@ import '../templates/atomic_login_template.dart';
 class AtomicLoginPage extends StatelessWidget {
   /// Callback que recibe el correo y la contraseña cuando el usuario inicia sesión.
   final void Function(String email, String password) onLogin;
+  /// Icono que se muestra en la parte superior de la pantalla.
+  final IconData icon;
+  /// Título que se muestra en la parte superior de la pantalla.
+  ///  Ejemplo: "Iniciar sesión"
+  final String title;
+  /// Etiquetas de los campos de texto.
+  ///   Ejemplo: "Correo electrónico"
+  final List<String> labels;
+  /// Texto del botón de inicio de sesión.
+  final String buttonText;
 
   /// Constructor de [AtomicLoginPage].
   ///
   /// - [onLogin] es obligatorio y maneja la lógica de autenticación.
-  const AtomicLoginPage({super.key, required this.onLogin});
+  const AtomicLoginPage({super.key, required this.onLogin, required this.icon, required this.title, required this.labels, required this.buttonText});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: AtomicTemplateLogin(
         onLogin: onLogin,
+        icon: icon,
+        title: title,
+        labels: labels,
+        buttonText: buttonText,
       ),
     );
   }
