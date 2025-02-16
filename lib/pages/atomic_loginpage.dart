@@ -64,13 +64,16 @@ class AtomicLoginPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Container(
-            alignment: Alignment.topCenter,
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: AtomicText(text: title, fontWeight: FontWeight.bold,
-                  size: TextSize.large , textAlign: TextAlign.center, color: titleColor ?? Colors.black),
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: Container(
+              alignment: Alignment.topCenter,
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: AtomicText(text: title, fontWeight: FontWeight.bold,
+                    size: TextSize.large , textAlign: TextAlign.center, color: titleColor ?? Colors.black),
+                ),
               ),
             ),
           ),
