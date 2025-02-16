@@ -23,7 +23,10 @@ class AtomicLoginPage extends StatelessWidget {
   final IconData icon;
   /// Título que se muestra en la parte superior del formulario
   final String title;
+
+  /// color del titulo
   final Color? titleColor;
+
   /// Título que se muestra en la parte superior del formulario.
   ///  Ejemplo: "Iniciar sesión"
   final String subTitle;
@@ -42,14 +45,17 @@ class AtomicLoginPage extends StatelessWidget {
   final int fieldsNumber;
 
   /// El color del texto del label.
-  final Color? textColor;
+  final Color? textColorLabel;
 
   /// El tamaño del texto, que afecta su estilo.
   /// Por defecto, usa [TextSize.medium].
-  final TextSize? size;
+  final TextSize? sizeOfLabelText;
 
   /// El peso de la fuente del texto.
-  final FontWeight? fontWeight;
+  final FontWeight? fontWeightOfLabelText;
+
+  /// color del ícono
+  final Color? iconColor;
 
   /// Constructor de [AtomicLoginPage].
   ///
@@ -57,7 +63,7 @@ class AtomicLoginPage extends StatelessWidget {
   const AtomicLoginPage({super.key, required this.onLogin, required this.icon,
     required this.title, required this.labels, required this.buttonText,
      this.buttonColor, this.buttonTextColor, this.titleColor, required this.fieldsNumber,
-    this.textColor, this.size, this.fontWeight, required this.subTitle, this.subTitleColor});
+    this.textColorLabel, this.sizeOfLabelText, this.fontWeightOfLabelText, required this.subTitle, this.subTitleColor, this.iconColor});
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +78,8 @@ class AtomicLoginPage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: AtomicText(text: title, fontWeight: FontWeight.bold,
-                    size: TextSize.large , textAlign: TextAlign.center, color: titleColor ?? Colors.black),
+                    size: TextSize.large , textAlign: TextAlign.center,
+                      color: titleColor ?? Colors.black),
                 ),
               ),
             ),
@@ -83,6 +90,7 @@ class AtomicLoginPage extends StatelessWidget {
           AtomicTemplateLogin(
             onLogin: onLogin,
             icon: icon,
+            iconColor: iconColor ,
             title: subTitle,
             labels: labels,
             buttonText: buttonText,
