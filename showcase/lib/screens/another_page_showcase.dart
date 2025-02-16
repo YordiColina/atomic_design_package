@@ -47,7 +47,7 @@ class AnotherPageShowcase extends StatelessWidget {
       /// y la cantidad de campos a usar en el formulario
       body: AtomicLoginPage(onLogin: _handleLogin, icon: Icons.person,title: "Fake store",
       labels: ["Correo Electrónico", "Contraseña"], buttonText: 'Iniciar Sesión', fieldsNumber: 2,
-        subTitle: 'Iniciar Sesión', iconSize: 50,
+        subTitle: 'Iniciar Sesión', iconSize: 50,fontWeight: FontWeight.bold,
       ),
     );
   }

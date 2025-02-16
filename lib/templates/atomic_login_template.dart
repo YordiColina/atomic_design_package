@@ -49,6 +49,9 @@ class AtomicTemplateLogin extends StatefulWidget {
   /// Color del texto del botón.
   final Color? buttonTextColor;
 
+  /// El peso de la fuente del texto.
+  final FontWeight fontWeightSubtitle;
+
   /// Número de campos en el formulario.
   final int fieldsNumber;
 
@@ -78,7 +81,7 @@ class AtomicTemplateLogin extends StatefulWidget {
       this.textLabelColor,
       this.sizeOfLabelText,
       this.fontWeightLabelText,
-      this.titleSize, required this.iconSize});
+      this.titleSize, required this.iconSize, required this.fontWeightSubtitle});
 
   @override
   _AtomicTemplateLoginState createState() => _AtomicTemplateLoginState();
@@ -126,6 +129,7 @@ class _AtomicTemplateLoginState extends State<AtomicTemplateLogin> {
             // 📌 Ícono con título centrado
             AtomicIconText(
               size: widget.iconSize,
+              fontWeight: widget.fontWeightSubtitle,
               text: widget.title,
               icon: widget.icon,
               iconColor: widget.iconColor ?? Colors.blueAccent,

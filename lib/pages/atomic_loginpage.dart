@@ -58,6 +58,9 @@ class AtomicLoginPage extends StatelessWidget {
   /// Número de campos de texto.
   final int fieldsNumber;
 
+  /// El peso de la fuente del texto.
+  final FontWeight fontWeight;
+
   /// El color del texto del label.
   final Color? textColorLabel;
 
@@ -95,7 +98,7 @@ class AtomicLoginPage extends StatelessWidget {
       this.subTitleColor,
       this.iconColor,
       this.titleSize,
-      this.subtitleSize, required this.iconSize});
+      this.subtitleSize, required this.iconSize, required this.fontWeight});
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +136,7 @@ class AtomicLoginPage extends StatelessWidget {
             buttonColor: buttonColor,
             buttonTextColor: buttonTextColor,
             titleColor: subTitleColor,
-            fieldsNumber: fieldsNumber,
+            fieldsNumber: fieldsNumber, fontWeightSubtitle: fontWeight,
           ),
         ],
       ),

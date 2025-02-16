@@ -89,6 +89,7 @@ class AtomicTemplateRegister extends StatelessWidget {
               iconColor: iconColor ?? Colors.blue,
               textColor: textColor ?? Colors.black,
               size: iconSize,
+              fontWeight: FontWeight.bold,
             ),
             const SizedBox(height: 20),
 

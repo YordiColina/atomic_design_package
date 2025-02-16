@@ -37,6 +37,7 @@ class MoleculesShowcase extends StatelessWidget {
           Center(
             child: AtomicIconText(
               size: 25,
+              fontWeight: FontWeight.w600,
               text: "Ejemplo de Molécula",
               icon: Icons.info,
               iconColor: Colors.blue,

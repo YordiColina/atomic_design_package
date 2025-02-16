@@ -96,6 +96,7 @@ class TemplatesShowcase extends StatelessWidget {
                 title: 'Inicio de sesión',
                 fieldsNumber: 2,
                 iconSize: 50,
+                fontWeightSubtitle: FontWeight.bold,
               ),
 
               const SizedBox(height: 20),

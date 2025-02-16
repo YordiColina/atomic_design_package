@@ -67,6 +67,7 @@ class AtomicHomePage extends StatelessWidget {
           // 📌 Título con icono
           const AtomicIconText(
             size: 40,
+            fontWeight: FontWeight.bold,
             text: "Explora Nuestros Productos",
             icon: Icons.shopping_cart,
             iconColor: Colors.blueAccent,

@@ -37,6 +37,9 @@ class AtomicIconText extends StatelessWidget {
   /// El color del texto.
   final Color textColor;
 
+  /// El peso de la fuente del texto.
+  final FontWeight fontWeight;
+
   /// Crea una instancia de [AtomicIconText].
   const AtomicIconText({
     super.key,
@@ -44,7 +47,7 @@ class AtomicIconText extends StatelessWidget {
     required this.text,
     this.icon,
     required this.iconColor,
-    required this.textColor, this.textSize,
+    required this.textColor, this.textSize, required this.fontWeight,
   });
 
 
@@ -62,7 +65,7 @@ class AtomicIconText extends StatelessWidget {
         const SizedBox(height: 4),
         AtomicText(
          text:  text,
-          size: textSize ?? TextSize.medium,fontWeight:FontWeight.w500 , color: textColor,
+          size: textSize ?? TextSize.medium,fontWeight: fontWeight , color: textColor,
 
           textAlign: TextAlign.center,
         ),
