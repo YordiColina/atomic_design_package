@@ -19,13 +19,16 @@ class AtomicCard extends StatelessWidget {
   /// Categoría del producto o servicio.
   final String categoria;
 
+  /// color de la card
+  final Color? cardColor;
+
   /// Constructor de `AtomicCard`.
   const AtomicCard({
     super.key,
     required this.titulo,
     required this.precio,
     required this.imageUrl,
-    required this.categoria,
+    required this.categoria, this.cardColor,
   });
 
   @override
@@ -36,7 +39,7 @@ class AtomicCard extends StatelessWidget {
         height: 300,
         child: Card(
           elevation: 3,
-          color: const Color.fromRGBO(240, 240, 240, 1),
+          color: cardColor ?? const Color.fromRGBO(240, 240, 240, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
             side: const BorderSide(
