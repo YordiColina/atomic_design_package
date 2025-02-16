@@ -102,10 +102,10 @@ class AtomicTemplateCardList extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final item = items[index];
                         return AtomicCard(
-                          titulo: item['titulo'],
-                          precio: item['precio'],
-                          imageUrl: item['imageUrl'],
-                          categoria: item['categoria'],
+                          titulo: item['title'],
+                          precio: item['price'],
+                          imageUrl: item['image'],
+                          categoria: item['category'],
                         );
                       },
                     )
