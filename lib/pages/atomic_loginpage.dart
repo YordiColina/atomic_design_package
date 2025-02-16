@@ -70,7 +70,7 @@ class AtomicLoginPage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: AtomicText(text: title, fontWeight: FontWeight.bold,
-                  size: TextSize.large , textAlign: TextAlign.center, color: titleColor ?? Colors.black,   ),
+                  size: TextSize.large , textAlign: TextAlign.center, color: titleColor ?? Colors.black),
               ),
             ),
           ),
@@ -80,12 +80,12 @@ class AtomicLoginPage extends StatelessWidget {
           AtomicTemplateLogin(
             onLogin: onLogin,
             icon: icon,
-            title: title,
+            title: subTitle,
             labels: labels,
             buttonText: buttonText,
             buttonColor: buttonColor,
             buttonTextColor: buttonTextColor,
-            titleColor: titleColor,
+            titleColor: subTitleColor,
             fieldsNumber: fieldsNumber,
           ),
         ],
