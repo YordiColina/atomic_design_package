@@ -116,10 +116,10 @@ class AtomicTemplateCardList extends StatelessWidget {
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 16),
                           child: AtomicCard(
-                            titulo: item['titulo'],
-                            precio: item['precio'],
-                            imageUrl: item['imageUrl'],
-                            categoria: item['categoria'],
+                            titulo: item['title'],
+                            precio: item['price'],
+                            imageUrl: item['image'],
+                            categoria: item['category'],
                           ),
                         );
                       },
