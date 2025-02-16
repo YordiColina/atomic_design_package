@@ -26,6 +26,10 @@ class AnotherPageShowcase extends StatelessWidget {
     print("Login con: Email: $email, Password: $password");
   }
 
+  void _handleBack() {
+    // Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,9 +49,17 @@ class AnotherPageShowcase extends StatelessWidget {
       /// el texto del botón de la parte inferior al formulario
       /// el subtitulo que indica que pantalla es [register, login] acompañado de un icono
       /// y la cantidad de campos a usar en el formulario
-      body: AtomicLoginPage(onLogin: _handleLogin, icon: Icons.person,title: "Fake store",
-      labels: ["Correo Electrónico", "Contraseña"], buttonText: 'Iniciar Sesión', fieldsNumber: 2,
-        subTitle: 'Iniciar Sesión', iconSize: 50,fontWeight: FontWeight.bold,
+      body: AtomicLoginPage(
+        onLogin: _handleLogin,
+        icon: Icons.person,
+        title: "Fake store",
+        labels: ["Correo Electrónico", "Contraseña"],
+        buttonText: 'Iniciar Sesión',
+        fieldsNumber: 2,
+        subTitle: 'Iniciar Sesión',
+        iconSize: 50,
+        fontWeight: FontWeight.bold,
+        onBack: _handleBack,
       ),
     );
   }

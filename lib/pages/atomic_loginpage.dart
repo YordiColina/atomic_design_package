@@ -20,6 +20,9 @@ class AtomicLoginPage extends StatelessWidget {
   /// Callback que recibe el correo y la contraseña cuando el usuario inicia sesión.
   final void Function(String email, String password) onLogin;
 
+  ///función para manejar la navegación de retorno
+  final void Function() onBack;
+
   /// Icono que se muestra en la parte superior de la pantalla.
   final IconData icon;
 
@@ -98,12 +101,16 @@ class AtomicLoginPage extends StatelessWidget {
       this.subTitleColor,
       this.iconColor,
       this.titleSize,
-      this.subtitleSize, required this.iconSize, required this.fontWeight});
+      this.subtitleSize, required this.iconSize, required this.fontWeight, required this.onBack});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  AppBar(),
+      appBar:  AppBar(
+        leading: GestureDetector(
+          onTap: onBack ,
+            child: Icon(Icons.arrow_back_ios)),
+      ),
       body: Column(
         children: [
           Padding(
