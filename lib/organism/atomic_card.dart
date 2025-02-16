@@ -36,7 +36,7 @@ class AtomicCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: SizedBox(
-        height: 310,
+        height: 330,
         child: Card(
           elevation: 3,
           color: cardColor ?? const Color.fromRGBO(240, 240, 240, 1),
@@ -61,7 +61,7 @@ class AtomicCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
 
-                /// 🖼️ Imagen con diseño responsive
+                /// 🖼️ Imagen
                 SizedBox(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
