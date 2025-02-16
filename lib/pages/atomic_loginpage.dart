@@ -21,12 +21,15 @@ class AtomicLoginPage extends StatelessWidget {
   final void Function(String email, String password) onLogin;
   /// Icono que se muestra en la parte superior de la pantalla.
   final IconData icon;
-  /// Título que se muestra en la parte superior de la pantalla.
-  ///  Ejemplo: "Iniciar sesión"
+  /// Título que se muestra en la parte superior del formulario
   final String title;
+  final Color? titleColor;
+  /// Título que se muestra en la parte superior del formulario.
+  ///  Ejemplo: "Iniciar sesión"
+  final String subTitle;
   /// Etiquetas de los campos de texto.
   ///   Ejemplo: "Correo electrónico"
-  final Color? titleColor;
+  final Color? subTitleColor;
   final List<String> labels;
   /// Texto del botón de inicio de sesión.
   final String buttonText;
@@ -54,21 +57,38 @@ class AtomicLoginPage extends StatelessWidget {
   const AtomicLoginPage({super.key, required this.onLogin, required this.icon,
     required this.title, required this.labels, required this.buttonText,
      this.buttonColor, this.buttonTextColor, this.titleColor, required this.fieldsNumber,
-    this.textColor, this.size, this.fontWeight});
+    this.textColor, this.size, this.fontWeight, required this.subTitle, this.subTitleColor});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AtomicTemplateLogin(
-        onLogin: onLogin,
-        icon: icon,
-        title: title,
-        labels: labels,
-        buttonText: buttonText,
-        buttonColor: buttonColor,
-        buttonTextColor: buttonTextColor,
-        titleColor: titleColor,
-        fieldsNumber: fieldsNumber,
+      body: Column(
+        children: [
+          Container(
+            alignment: Alignment.topCenter,
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: AtomicText(text: title, fontWeight: FontWeight.bold,
+                  size: TextSize.large , textAlign: TextAlign.center, color: titleColor ?? Colors.black,   ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+          AtomicTemplateLogin(
+            onLogin: onLogin,
+            icon: icon,
+            title: title,
+            labels: labels,
+            buttonText: buttonText,
+            buttonColor: buttonColor,
+            buttonTextColor: buttonTextColor,
+            titleColor: titleColor,
+            fieldsNumber: fieldsNumber,
+          ),
+        ],
       ),
     );
   }

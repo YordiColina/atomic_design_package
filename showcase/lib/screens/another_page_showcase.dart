@@ -32,7 +32,6 @@ class AnotherPageShowcase extends StatelessWidget {
       /// 📌 Color de fondo de la página
       backgroundColor: const Color.fromRGBO(249, 249, 249, 1),
 
-      /// 📌 AppBar personalizado
       appBar: AppBar(
         title: const Text("Páginas"),
         backgroundColor: const Color.fromRGBO(249, 249, 249, 1),
@@ -41,8 +40,14 @@ class AnotherPageShowcase extends StatelessWidget {
       /// 📌 Contenido principal: `AtomicLoginPage`
       ///
       /// Se pasa la función `_handleLogin` a la página de inicio de sesión.
-      body: AtomicLoginPage(onLogin: _handleLogin, icon: Icons.person,title: "Iniciar Sesión",
+      /// el título que va en la parte superior de la pantalla y en el centro
+      /// los titulos [labels] de cada campo del formulario
+      /// el texto del botón de la parte inferior al formulario
+      /// el subtitulo que indica que pantalla es [register, login] acompañado de un icono
+      /// y la cantidad de campos a usar en el formulario
+      body: AtomicLoginPage(onLogin: _handleLogin, icon: Icons.person,title: "Fake store",
       labels: ["Correo Electrónico", "Contraseña"], buttonText: 'Iniciar Sesión', fieldsNumber: 2,
+        subTitle: 'Iniciar Sesión',
       ),
     );
   }
