@@ -68,7 +68,7 @@ class AtomicCard extends StatelessWidget {
                     child: Image.network(
                       imageUrl,
                       width: 200,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                       height: 200,
                     ),
                   ),

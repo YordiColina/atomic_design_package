@@ -38,18 +38,18 @@ class TemplatesShowcase extends StatelessWidget {
     /// Cada elemento tiene un título, precio, imagen y categoría.
     final List<Map<String, dynamic>> items = [
       {
-        "titulo": "Producto 1",
-        "precio": 25000.5,
-        "imageUrl":
+        "title": "Producto 1",
+        "price": 25000.5,
+        "image":
             "https://www.billin.net/blog/wp-content/uploads/2021/06/Im%C3%A1genes-sin-derechos-de-autor.jpeg",
-        "categoria": "Categoría A",
+        "category": "Categoría A",
       },
       {
-        "titulo": "Producto 2",
-        "precio": 35000.5,
-        "imageUrl":
+        "title": "Producto 2",
+        "price": 35000.5,
+        "image":
             "https://www.billin.net/blog/wp-content/uploads/2021/06/Im%C3%A1genes-sin-derechos-de-autor.jpeg",
-        "categoria": "Categoría B",
+        "category": "Categoría B",
       },
     ];
 
