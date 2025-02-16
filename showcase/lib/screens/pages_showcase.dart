@@ -25,22 +25,22 @@ class PagesShowcase extends StatelessWidget {
   /// Cada producto incluye un título, precio, imagen y categoría.
   final List<Map<String, dynamic>> items = [
     {
-      "titulo": "Producto 1",
-      "precio": 20.00,
-      "imageUrl": "https://www.billin.net/blog/wp-content/uploads/2021/06/Im%C3%A1genes-sin-derechos-de-autor.jpeg",
-      "categoria": "Categoría A",
+      "title": "Producto 1",
+      "price": 20.00,
+      "image": "https://www.billin.net/blog/wp-content/uploads/2021/06/Im%C3%A1genes-sin-derechos-de-autor.jpeg",
+      "category": "Categoría A",
     },
     {
-      "titulo": "Producto 2",
-      "precio": 35.00,
-      "imageUrl": "https://www.billin.net/blog/wp-content/uploads/2021/06/Im%C3%A1genes-sin-derechos-de-autor.jpeg",
-      "categoria": "Categoría B",
+      "title": "Producto 2",
+      "price": 35.00,
+      "image": "https://www.billin.net/blog/wp-content/uploads/2021/06/Im%C3%A1genes-sin-derechos-de-autor.jpeg",
+      "category": "Categoría B",
     },
     {
-      "titulo": "Producto 3",
-      "precio": 50.00,
-      "imageUrl": "https://www.billin.net/blog/wp-content/uploads/2021/06/Im%C3%A1genes-sin-derechos-de-autor.jpeg",
-      "categoria": "Categoría C",
+      "title": "Producto 3",
+      "price": 50.00,
+      "image": "https://www.billin.net/blog/wp-content/uploads/2021/06/Im%C3%A1genes-sin-derechos-de-autor.jpeg",
+      "category": "Categoría C",
     },
   ];
 
