@@ -67,11 +67,11 @@ class AtomicTemplateRegister extends StatelessWidget {
     this.textColor,
     this.buttonColor,
     this.buttonTextColor,
-
     required this.fieldsNumber,
     this.textLabelColor,
     this.sizeOfLabelText,
-    this.fontWeightLabelText, this.iconColor,
+    this.fontWeightLabelText,
+    this.iconColor,
     required this.iconSize,
   });
 
@@ -87,8 +87,8 @@ class AtomicTemplateRegister extends StatelessWidget {
             AtomicIconText(
               text: "Registro de Usuario",
               iconColor: iconColor ?? Colors.blue,
-               textColor: textColor ?? Colors.black,
-               size: iconSize,
+              textColor: textColor ?? Colors.black,
+              size: iconSize,
             ),
             const SizedBox(height: 20),
 
