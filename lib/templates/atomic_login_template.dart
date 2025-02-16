@@ -18,22 +18,37 @@ import '../organism/Atomic_form.dart';
 class AtomicTemplateLogin extends StatefulWidget {
   /// Función que se ejecuta al enviar el formulario con el email y la contraseña.
   final void Function(String email, String password) onLogin;
+
   /// Ícono que se muestra en la parte superior de la plantilla.
   final IconData icon;
+
   /// Título que se muestra en la parte superior de la plantilla.
   final String title;
+
   /// Etiquetas de los campos del formulario.
   final List<String> labels;
+
   /// Texto del botón de envío del formulario.
   final String buttonText;
+
   /// Color del ícono.
   final Color? iconColor;
+
+  /// tamaño del icono
+  final double iconSize;
+
+  /// tamaño del del titulo
+  final TextSize? titleSize;
+
   /// Color del texto.
   final Color? titleColor;
+
   /// Color del botón.
   final Color? buttonColor;
+
   /// Color del texto del botón.
   final Color? buttonTextColor;
+
   /// Número de campos en el formulario.
   final int fieldsNumber;
 
@@ -47,12 +62,23 @@ class AtomicTemplateLogin extends StatefulWidget {
   /// El peso de la fuente del texto.
   final FontWeight? fontWeightLabelText;
 
-
   /// Constructor de [AtomicTemplateLogin].
-  const AtomicTemplateLogin({super.key, required this.onLogin, required this.icon,
-    required this.title, required this.labels, required this.buttonText,
-    this.titleColor, this.iconColor,  this.buttonColor, this.buttonTextColor, required this.fieldsNumber,
-    this.textLabelColor, this.sizeOfLabelText, this.fontWeightLabelText});
+  const AtomicTemplateLogin(
+      {super.key,
+      required this.onLogin,
+      required this.icon,
+      required this.title,
+      required this.labels,
+      required this.buttonText,
+      this.titleColor,
+      this.iconColor,
+      this.buttonColor,
+      this.buttonTextColor,
+      required this.fieldsNumber,
+      this.textLabelColor,
+      this.sizeOfLabelText,
+      this.fontWeightLabelText,
+      this.titleSize, required this.iconSize});
 
   @override
   _AtomicTemplateLoginState createState() => _AtomicTemplateLoginState();
@@ -92,13 +118,14 @@ class _AtomicTemplateLoginState extends State<AtomicTemplateLogin> {
 
     return Center(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: isWideScreen ? 80 : 24, vertical: 32),
+        padding: EdgeInsets.symmetric(
+            horizontal: isWideScreen ? 80 : 24, vertical: 32),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             // 📌 Ícono con título centrado
-         AtomicIconText(
-              size: IconTextSize.medium,
+            AtomicIconText(
+              size: widget.iconSize,
               text: widget.title,
               icon: widget.icon,
               iconColor: widget.iconColor ?? Colors.blueAccent,

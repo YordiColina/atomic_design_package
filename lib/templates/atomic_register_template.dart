@@ -5,6 +5,7 @@
  * Se adapta a diferentes tamaños de pantalla y permite manejar el registro a través de un callback.
  */
 
+import 'package:atomic_design/molecules/atomic_icon_with_text.dart';
 import 'package:flutter/material.dart';
 import '../atoms/atomic_text.dart';
 import '../organism/Atomic_form.dart';
@@ -18,16 +19,28 @@ class AtomicTemplateRegister extends StatelessWidget {
   ///
   /// Recibe un `Map<String, String>` con los valores ingresados en cada campo.
   final void Function(Map<String, String>) onRegister;
+
   /// Lista de etiquetas para los campos del formulario.
   final List<String> labels;
+
   /// Texto del botón de registro.
   final String buttonText;
+
   /// Color del texto.
   final Color? textColor;
+
   /// Color del botón.
   final Color? buttonColor;
+
   /// Color del texto del botón.
   final Color? buttonTextColor;
+
+  /// Color del texto del botón.
+  final Color? iconColor;
+
+  /// tamaño del icono
+  final double iconSize;
+
   /// Número de campos en el formulario.
   final int fieldsNumber;
 
@@ -54,7 +67,12 @@ class AtomicTemplateRegister extends StatelessWidget {
     this.textColor,
     this.buttonColor,
     this.buttonTextColor,
-    required this.fieldsNumber, this.textLabelColor, this.sizeOfLabelText, this.fontWeightLabelText,
+
+    required this.fieldsNumber,
+    this.textLabelColor,
+    this.sizeOfLabelText,
+    this.fontWeightLabelText, this.iconColor,
+    required this.iconSize,
   });
 
   @override
@@ -66,20 +84,24 @@ class AtomicTemplateRegister extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             // 📌 Título centrado
-            const AtomicText(
+            AtomicIconText(
               text: "Registro de Usuario",
-              size: TextSize.medium,
-              fontWeight: FontWeight.bold,
-              textAlign: TextAlign.center,
+              iconColor: iconColor ?? Colors.blue,
+               textColor: textColor ?? Colors.black,
+               size: iconSize,
             ),
             const SizedBox(height: 20),
 
             // 📌 Formulario dinámico
             AtomicForm(
-              fieldCount: fieldsNumber, // Número de campos basado en la lista de etiquetas
-              onSubmit: onRegister, // Callback que maneja el registro
-              labels: labels, // Etiquetas de los campos
-              buttonText: buttonText,// Texto del botón
+              fieldCount: fieldsNumber,
+              // Número de campos basado en la lista de etiquetas
+              onSubmit: onRegister,
+              // Callback que maneja el registro
+              labels: labels,
+              // Etiquetas de los campos
+              buttonText: buttonText,
+              // Texto del botón
               buttonColor: buttonColor,
               buttonTextColor: buttonTextColor,
             ),

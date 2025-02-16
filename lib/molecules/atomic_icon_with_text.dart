@@ -14,13 +14,16 @@
 /// ```
 import 'package:flutter/material.dart';
 
-/// Enum que representa los tamaños disponibles para el ícono y el texto.
-enum IconTextSize { small, medium }
+import '../atoms/atomic_text.dart';
+
+
 
 /// Un componente reutilizable que muestra un ícono con una etiqueta de texto.
 class AtomicIconText extends StatelessWidget {
   /// El tamaño del par icono-texto, afectando ambos elementos.
-  final IconTextSize size;
+  final double size;
+  /// tamaño del texto
+  final TextSize? textSize;
 
   /// El texto a mostrar debajo del ícono.
   final String text;
@@ -41,23 +44,10 @@ class AtomicIconText extends StatelessWidget {
     required this.text,
     this.icon,
     required this.iconColor,
-    required this.textColor,
+    required this.textColor, this.textSize,
   });
 
-  /// Devuelve el tamaño apropiado para el ícono según el tamaño seleccionado.
-  double _getIconSize() {
-    return size == IconTextSize.small ? 20.0 : 40.0;
-  }
 
-  /// Devuelve el tamaño de fuente apropiado según el tamaño seleccionado.
-  double _getFontSize() {
-    return size == IconTextSize.small ? 12.0 : 16.0;
-  }
-
-  /// Devuelve un ícono por defecto si no se proporciona uno.
-  IconData _getDefaultIcon() {
-    return size == IconTextSize.small ? Icons.shopping_cart : (icon ?? Icons.info);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,14 +55,15 @@ class AtomicIconText extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Icon(
-          _getDefaultIcon(),
-          size: _getIconSize(),
+          icon,
+          size: size,
           color: iconColor,
         ),
         const SizedBox(height: 4),
-        Text(
-          text,
-          style: TextStyle(fontSize: _getFontSize(), color: textColor, fontWeight: FontWeight.w500),
+        AtomicText(
+         text:  text,
+          size: textSize ?? TextSize.medium,fontWeight:FontWeight.w500 , color: textColor,
+
           textAlign: TextAlign.center,
         ),
       ],

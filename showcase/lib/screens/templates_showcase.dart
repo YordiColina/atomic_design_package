@@ -40,13 +40,15 @@ class TemplatesShowcase extends StatelessWidget {
       {
         "titulo": "Producto 1",
         "precio": 25000.5,
-        "imageUrl": "https://www.billin.net/blog/wp-content/uploads/2021/06/Im%C3%A1genes-sin-derechos-de-autor.jpeg",
+        "imageUrl":
+            "https://www.billin.net/blog/wp-content/uploads/2021/06/Im%C3%A1genes-sin-derechos-de-autor.jpeg",
         "categoria": "Categoría A",
       },
       {
         "titulo": "Producto 2",
         "precio": 35000.5,
-        "imageUrl": "https://www.billin.net/blog/wp-content/uploads/2021/06/Im%C3%A1genes-sin-derechos-de-autor.jpeg",
+        "imageUrl":
+            "https://www.billin.net/blog/wp-content/uploads/2021/06/Im%C3%A1genes-sin-derechos-de-autor.jpeg",
         "categoria": "Categoría B",
       },
     ];
@@ -86,9 +88,14 @@ class TemplatesShowcase extends StatelessWidget {
               /// 📌 Ejemplo de `AtomicTemplateLogin`
               ///
               /// Formulario de inicio de sesión con función `onLogin`.
-              AtomicTemplateLogin(onLogin: onLogin, buttonText: "Iniciar sesión",
-                labels: ["Correo", "Contraseña"], icon: Icons.person, title: 'Inicio de sesión', fieldsNumber: 2,
-
+              AtomicTemplateLogin(
+                onLogin: onLogin,
+                buttonText: "Iniciar sesión",
+                labels: ["Correo", "Contraseña"],
+                icon: Icons.person,
+                title: 'Inicio de sesión',
+                fieldsNumber: 2,
+                iconSize: 50,
               ),
 
               const SizedBox(height: 20),
@@ -110,8 +117,9 @@ class TemplatesShowcase extends StatelessWidget {
                   print(data);
                 },
                 labels: const ["Nombre", "Email", "Contraseña"],
-                buttonText: "Registrar", fieldsNumber: 3,
-
+                buttonText: "Registrar",
+                fieldsNumber: 3,
+                iconSize: 50,
               ),
             ],
           ),
