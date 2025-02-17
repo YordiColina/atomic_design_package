@@ -22,8 +22,8 @@ class AtomicTemplateLogin extends StatefulWidget {
   /// Función que se ejecutará cuando se presione el botón.
   final VoidCallback onPressed;
 
-  /// Callback que devuelve un booleano indicando si los campos están llenos.
-  final Function(bool) onFieldsFilled;
+  /// Callback que devuelve una lista de String con los valores indicando si los campos están llenos.
+  final Function(List<String>) onFieldsFilled;
 
   /// Ícono que se muestra en la parte superior de la plantilla.
   final IconData icon;
@@ -140,8 +140,8 @@ class _AtomicTemplateLoginState extends State<AtomicTemplateLogin> {
               buttonColor: widget.buttonColor,
               buttonTextColor: widget.buttonTextColor,
               onPressed: widget.onPressed,
-              onFieldsFilled: (bool ) {
-                widget.onFieldsFilled.call(bool);
+              onFieldsFilled: (values) {
+                widget.onFieldsFilled.call(values);
               },
             ),
           ],

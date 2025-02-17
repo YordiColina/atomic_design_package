@@ -33,8 +33,8 @@ class AtomicForm extends StatefulWidget {
   /// Función que se ejecutará cuando se presione el botón.
   final VoidCallback onPressed;
 
-  /// Callback que devuelve un booleano indicando si los campos están llenos.
-  final Function(bool) onFieldsFilled;
+  /// Callback que devuelve una lista de String con los valores indicando si los campos están llenos.
+  final Function(List<String>) onFieldsFilled;
 
   /// Crea una instancia de [AtomicForm].
   const AtomicForm({
@@ -87,7 +87,15 @@ class _AtomicFormState extends State<AtomicForm> {
   /// Verifica si todos los campos están llenos y llama al callback.
   void _checkFields() {
     bool allFieldsFilled = _controllers.every((controller) => controller.text.isNotEmpty);
-    widget.onFieldsFilled(allFieldsFilled);
+    List<String> controllersValues = [];
+    if (allFieldsFilled) {
+      setState(() {
+        for(int i = 0; i < _controllers.length; i++) {
+          controllersValues.add(_controllers[i].text);
+        }
+      });
+    }
+    widget.onFieldsFilled(controllersValues);
   }
 
   /// Valida el formulario y ejecuta la función onPressed si es válido.

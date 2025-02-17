@@ -22,8 +22,9 @@ class AtomicTemplateRegister extends StatelessWidget {
   /// Función que se ejecutará cuando se presione el botón.
   final VoidCallback onPressed;
 
-  /// Callback que devuelve un booleano indicando si los campos están llenos.
-  final Function(bool) onFieldsFilled;
+
+  /// Callback que devuelve una lista de String con los valores indicando si los campos están llenos.
+  final Function(List<String>) onFieldsFilled;
 
   /// Lista de etiquetas para los campos del formulario.
   final List<String> labels;
@@ -60,8 +61,8 @@ class AtomicTemplateRegister extends StatelessWidget {
   final FontWeight? fontWeightLabelText;
 
   /// Constructor de [AtomicTemplateRegister].
-  ///
-  /// - [onRegister]: Función que se ejecuta cuando se envía el formulario.
+  /// - [onFieldsFilled]: Función que retorna los valores del form rellenos en un callback
+  /// - [onPressed]: Función que se ejecuta cuando se envía el formulario.
   /// - [labels]: Lista de nombres de los campos que aparecerán en el formulario.
   /// - [buttonText]: Texto del botón de envío.
   const AtomicTemplateRegister({
@@ -109,8 +110,8 @@ class AtomicTemplateRegister extends StatelessWidget {
               buttonColor: buttonColor,
               buttonTextColor: buttonTextColor,
               onPressed: onPressed , // función que recibe la acción a realizar despues de las validaciones
-              onFieldsFilled: (bool ) {
-                onFieldsFilled.call(bool);
+              onFieldsFilled: (values) {
+                onFieldsFilled.call(values);
               },//función que retorna un bool que certifica que los campos estan llenos
             ),
           ],

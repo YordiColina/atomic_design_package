@@ -43,7 +43,7 @@ class AnotherPageShowcase extends StatelessWidget {
       /// y la cantidad de campos a usar en el formulario
       body: AtomicLoginPage(
         onPressed: () {},
-        onFieldsFilled: (bool){},
+        onFieldsFilled: (values){},
         icon: Icons.person,
         title: "Fake store",
         labels: ["Correo Electrónico", "Contraseña"],

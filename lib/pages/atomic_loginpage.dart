@@ -15,14 +15,15 @@ import '../templates/atomic_login_template.dart';
 /// dentro de un `Scaffold` para estructurar la pantalla.
 ///
 /// ### Parámetros:
-/// - [onLogin]: Función que se ejecuta cuando el usuario ingresa sus credenciales correctamente.
+/// - [onPresed]: Función que se ejecuta cuando el usuario ingresa sus credenciales correctamente.
+/// -[onFieldsFilled]: función que retorna los valores de los campos rellenos
 class AtomicLoginPage extends StatelessWidget {
 
   /// Función que se ejecutará cuando se presione el botón.
   final VoidCallback onPressed;
 
-  /// Callback que devuelve un booleano indicando si los campos están llenos.
-  final Function(bool) onFieldsFilled;
+  /// Callback que devuelve una lista de String con los valores indicando si los campos están llenos.
+  final Function(List<String>) onFieldsFilled;
 
   ///función para manejar la navegación de retorno
   final void Function() onBack;
@@ -150,8 +151,8 @@ class AtomicLoginPage extends StatelessWidget {
               fieldsNumber: fieldsNumber,
             fontWeightSubtitle: fontWeight,
             onPressed: onPressed,
-            onFieldsFilled: (bool ) {
-                onFieldsFilled.call(bool);
+            onFieldsFilled: (values) {
+                onFieldsFilled.call(values);
             },
             ),
           ],
