@@ -78,8 +78,11 @@ class OrganismsShowcase extends StatelessWidget {
                 fieldCount: 5,
                 buttonText: "Crear cuenta",
                 labels: ["Nombre", "Apellido", "Edad", "Correo", "Dirección"],
-                onSubmit: (values) {
+                onFieldsFilled: (values) {
                   print(values);
+                },
+                onPressed: () {
+                  print("exito");
                 },
               ),
             ],

@@ -17,8 +17,12 @@ import '../templates/atomic_login_template.dart';
 /// ### Parámetros:
 /// - [onLogin]: Función que se ejecuta cuando el usuario ingresa sus credenciales correctamente.
 class AtomicLoginPage extends StatelessWidget {
-  /// Callback que recibe el correo y la contraseña cuando el usuario inicia sesión.
-  final void Function(String email, String password) onLogin;
+
+  /// Función que se ejecutará cuando se presione el botón.
+  final VoidCallback onPressed;
+
+  /// Callback que devuelve un booleano indicando si los campos están llenos.
+  final Function(bool) onFieldsFilled;
 
   ///función para manejar la navegación de retorno
   final void Function() onBack;
@@ -85,7 +89,6 @@ class AtomicLoginPage extends StatelessWidget {
   /// - [onLogin] es obligatorio y maneja la lógica de autenticación.
   const AtomicLoginPage(
       {super.key,
-      required this.onLogin,
       required this.icon,
       required this.title,
       required this.labels,
@@ -101,7 +104,7 @@ class AtomicLoginPage extends StatelessWidget {
       this.subTitleColor,
       this.iconColor,
       this.titleSize,
-      this.subtitleSize, required this.iconSize, required this.fontWeight, required this.onBack});
+      this.subtitleSize, required this.iconSize, required this.fontWeight, required this.onBack, required this.onPressed, required this.onFieldsFilled});
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +138,6 @@ class AtomicLoginPage extends StatelessWidget {
               height: 25,
             ),
             AtomicTemplateLogin(
-              onLogin: onLogin,
               icon: icon,
               iconSize: iconSize,
               iconColor: iconColor,
@@ -145,7 +147,12 @@ class AtomicLoginPage extends StatelessWidget {
               buttonColor: buttonColor,
               buttonTextColor: buttonTextColor,
               titleColor: subTitleColor,
-              fieldsNumber: fieldsNumber, fontWeightSubtitle: fontWeight,
+              fieldsNumber: fieldsNumber,
+            fontWeightSubtitle: fontWeight,
+            onPressed: onPressed,
+            onFieldsFilled: (bool ) {
+                onFieldsFilled.call(bool);
+            },
             ),
           ],
         ),

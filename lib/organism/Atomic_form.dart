@@ -1,14 +1,7 @@
-/**
- * Un formulario dinámico basado en Atomic Design.
- *
- * Este widget permite generar un formulario con un número variable de campos de entrada
- * y un botón de envío. Los datos ingresados se envían a través de un callback.
- */
-
-import 'package:atomic_design/atoms/Atomic_button.dart';
 import 'package:flutter/material.dart';
 import '../atoms/atomic_text.dart';
 import '../molecules/atomic_textfield_with_label.dart';
+import 'package:atomic_design/atoms/Atomic_button.dart';
 
 /// Un formulario dinámico que permite capturar datos de múltiples campos.
 class AtomicForm extends StatefulWidget {
@@ -37,19 +30,25 @@ class AtomicForm extends StatefulWidget {
   /// El peso de la fuente del texto.
   final FontWeight? fontWeight;
 
+  /// Función que se ejecutará cuando se presione el botón.
+  final VoidCallback onPressed;
 
-  /// Función de callback que se ejecuta al enviar el formulario.
-  ///
-  /// Retorna un `Map<String, String>` con las etiquetas como claves y los valores ingresados como datos.
-  final Function(Map<String, String>) onSubmit;
+  /// Callback que devuelve un booleano indicando si los campos están llenos.
+  final Function(bool) onFieldsFilled;
 
   /// Crea una instancia de [AtomicForm].
   const AtomicForm({
     super.key,
     required this.fieldCount,
-    required this.onSubmit,
     required this.buttonText,
-    required this.labels, this.buttonColor, this.buttonTextColor, this.textColor, this.size, this.fontWeight,
+    required this.labels,
+    required this.onPressed,
+    required this.onFieldsFilled,
+    this.buttonColor,
+    this.buttonTextColor,
+    this.textColor,
+    this.size,
+    this.fontWeight,
   });
 
   @override
@@ -68,25 +67,33 @@ class _AtomicFormState extends State<AtomicForm> {
     super.initState();
     // Inicializa los controladores de texto según la cantidad de campos.
     _controllers = List.generate(widget.fieldCount, (index) => TextEditingController());
+
+    // Agrega listeners a los controladores para verificar el estado de los campos.
+    for (var controller in _controllers) {
+      controller.addListener(_checkFields);
+    }
   }
 
   @override
   void dispose() {
     // Libera los controladores para evitar fugas de memoria.
     for (var controller in _controllers) {
+      controller.removeListener(_checkFields);
       controller.dispose();
     }
     super.dispose();
   }
 
-  /// Valida y envía los datos del formulario al callback.
-  void _submitForm() {
+  /// Verifica si todos los campos están llenos y llama al callback.
+  void _checkFields() {
+    bool allFieldsFilled = _controllers.every((controller) => controller.text.isNotEmpty);
+    widget.onFieldsFilled(allFieldsFilled);
+  }
+
+  /// Valida el formulario y ejecuta la función onPressed si es válido.
+  void _handleButtonPress() {
     if (_formKey.currentState!.validate()) {
-      Map<String, String> formData = {};
-      for (int i = 0; i < widget.fieldCount; i++) {
-        formData[widget.labels[i]] = _controllers[i].text;
-      }
-      widget.onSubmit(formData);
+      widget.onPressed();
     }
   }
 
@@ -118,7 +125,7 @@ class _AtomicFormState extends State<AtomicForm> {
 
             // 🔘 Botón para enviar el formulario
             AtomicButton(
-              onPressed: _submitForm,
+              onPressed: _handleButtonPress,
               label: widget.buttonText,
               color: widget.buttonColor,
               textColor: widget.buttonTextColor,

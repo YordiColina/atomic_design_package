@@ -6,6 +6,8 @@
  * Es adaptable a diferentes tamaños de pantalla.
  */
 
+
+
 import 'package:flutter/material.dart';
 import '../atoms/atomic_text.dart';
 import '../molecules/atomic_icon_with_text.dart';
@@ -16,8 +18,12 @@ import '../organism/Atomic_form.dart';
 /// Contiene un formulario con los campos necesarios y un botón de envío.
 /// Permite manejar la autenticación a través de un callback.
 class AtomicTemplateLogin extends StatefulWidget {
-  /// Función que se ejecuta al enviar el formulario con el email y la contraseña.
-  final void Function(String email, String password) onLogin;
+
+  /// Función que se ejecutará cuando se presione el botón.
+  final VoidCallback onPressed;
+
+  /// Callback que devuelve un booleano indicando si los campos están llenos.
+  final Function(bool) onFieldsFilled;
 
   /// Ícono que se muestra en la parte superior de la plantilla.
   final IconData icon;
@@ -68,7 +74,6 @@ class AtomicTemplateLogin extends StatefulWidget {
   /// Constructor de [AtomicTemplateLogin].
   const AtomicTemplateLogin(
       {super.key,
-      required this.onLogin,
       required this.icon,
       required this.title,
       required this.labels,
@@ -81,7 +86,7 @@ class AtomicTemplateLogin extends StatefulWidget {
       this.textLabelColor,
       this.sizeOfLabelText,
       this.fontWeightLabelText,
-      this.titleSize, required this.iconSize, required this.fontWeightSubtitle});
+      this.titleSize, required this.iconSize, required this.fontWeightSubtitle, required this.onPressed, required this.onFieldsFilled});
 
   @override
   _AtomicTemplateLoginState createState() => _AtomicTemplateLoginState();
@@ -101,18 +106,7 @@ class _AtomicTemplateLoginState extends State<AtomicTemplateLogin> {
   ///
   /// Verifica que los campos no estén vacíos y ejecuta la función `onLogin`
   /// proporcionada en el widget padre.
-  void _submit() {
-    if (_formKey.currentState?.validate() ?? false) {
-      final email = _emailController.text.trim();
-      final password = _passwordController.text.trim();
 
-      if (email.isNotEmpty && password.isNotEmpty) {
-        widget.onLogin(email, password);
-      } else {
-        print("Error: correo o contraseña vacíos");
-      }
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -141,11 +135,14 @@ class _AtomicTemplateLoginState extends State<AtomicTemplateLogin> {
             AtomicForm(
               key: _formKey,
               fieldCount: widget.fieldsNumber,
-              onSubmit: (values) {},
               buttonText: widget.buttonText,
               labels: widget.labels,
               buttonColor: widget.buttonColor,
               buttonTextColor: widget.buttonTextColor,
+              onPressed: widget.onPressed,
+              onFieldsFilled: (bool ) {
+                widget.onFieldsFilled.call(bool);
+              },
             ),
           ],
         ),

@@ -26,12 +26,6 @@ class TemplatesShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// 📌 Función de `onLogin`
-    ///
-    /// Recibe el usuario y la contraseña e imprime el usuario en consola.
-    void onLogin(String user, String password) {
-      print(user);
-    }
 
     /// 📌 Lista de elementos para la plantilla `AtomicTemplateCardList`
     ///
@@ -89,14 +83,16 @@ class TemplatesShowcase extends StatelessWidget {
               ///
               /// Formulario de inicio de sesión con función `onLogin`.
               AtomicTemplateLogin(
-                onLogin: onLogin,
+                onPressed: () {},
                 buttonText: "Iniciar sesión",
                 labels: ["Correo", "Contraseña"],
                 icon: Icons.person,
                 title: 'Inicio de sesión',
                 fieldsNumber: 2,
                 iconSize: 50,
-                fontWeightSubtitle: FontWeight.bold,
+                fontWeightSubtitle: FontWeight.bold, onFieldsFilled: (bool ) {
+                  print(bool);
+              },
               ),
 
               const SizedBox(height: 20),
@@ -114,8 +110,9 @@ class TemplatesShowcase extends StatelessWidget {
               ///
               /// Formulario de registro dinámico con etiquetas personalizadas y botón de acción.
               AtomicTemplateRegister(
-                onRegister: (Map<String, String> data) {
-                  print(data);
+                onPressed: () {},
+                onFieldsFilled: (bool) {
+                  print(bool);
                 },
                 labels: const ["Nombre", "Email", "Contraseña"],
                 buttonText: "Registrar",

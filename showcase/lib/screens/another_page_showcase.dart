@@ -18,14 +18,6 @@ class AnotherPageShowcase extends StatelessWidget {
   /// Constructor de `AnotherPageShowcase`
   const AnotherPageShowcase({super.key});
 
-  /// 📌 Función para manejar el inicio de sesión
-  ///
-  /// Recibe el `email` y `password` ingresados por el usuario.
-  /// Actualmente, solo imprime los valores en la consola.
-  void _handleLogin(String email, String password) {
-    print("Login con: Email: $email, Password: $password");
-  }
-
   void _handleBack() {
     // Navigator.pop(context);
   }
@@ -50,7 +42,8 @@ class AnotherPageShowcase extends StatelessWidget {
       /// el subtitulo que indica que pantalla es [register, login] acompañado de un icono
       /// y la cantidad de campos a usar en el formulario
       body: AtomicLoginPage(
-        onLogin: _handleLogin,
+        onPressed: () {},
+        onFieldsFilled: (bool){},
         icon: Icons.person,
         title: "Fake store",
         labels: ["Correo Electrónico", "Contraseña"],
