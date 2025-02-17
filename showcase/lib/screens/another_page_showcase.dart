@@ -11,15 +11,16 @@ import 'package:flutter/material.dart';
 /// - `AtomicLoginPage`: Página que contiene un formulario de inicio de sesión.
 ///
 /// 📌 **Estructura**
-/// - Se usa un `Scaffold` con un `AppBar` personalizado.
-/// - Se implementa un método `_handleLogin` que captura el correo y la contraseña del usuario.
-/// - La función `_handleLogin` podría ser usada para conectarse a Firebase u otro backend.
+/// -esta compuesto de un scaffold con un AtomicLoginPage
+
+
+
 class AnotherPageShowcase extends StatelessWidget {
   /// Constructor de `AnotherPageShowcase`
   const AnotherPageShowcase({super.key});
 
-  void _handleBack() {
-    // Navigator.pop(context);
+  void _handleRegister() {
+    // Navigator.push;
   }
 
   @override
@@ -52,7 +53,7 @@ class AnotherPageShowcase extends StatelessWidget {
         subTitle: 'Iniciar Sesión',
         iconSize: 50,
         fontWeight: FontWeight.bold,
-        onBack: _handleBack,
+        goToRegister: _handleRegister,
       ),
     );
   }

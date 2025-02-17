@@ -5,6 +5,7 @@
  * Se encarga de recibir las credenciales ingresadas por el usuario y pasarlas a la función `onLogin`.
  */
 
+import 'package:atomic_design/atomic_design.dart';
 import 'package:flutter/material.dart';
 import '../atoms/atomic_text.dart';
 import '../templates/atomic_login_template.dart';
@@ -18,15 +19,14 @@ import '../templates/atomic_login_template.dart';
 /// - [onPresed]: Función que se ejecuta cuando el usuario ingresa sus credenciales correctamente.
 /// -[onFieldsFilled]: función que retorna los valores de los campos rellenos
 class AtomicLoginPage extends StatelessWidget {
-
   /// Función que se ejecutará cuando se presione el botón.
   final VoidCallback onPressed;
 
   /// Callback que devuelve una lista de String con los valores indicando si los campos están llenos.
   final Function(List<String>) onFieldsFilled;
 
-  ///función para manejar la navegación de retorno
-  final void Function() onBack;
+  ///función para manejar la navegación a la pantalla de registro
+  final void Function() goToRegister;
 
   /// Icono que se muestra en la parte superior de la pantalla.
   final IconData icon;
@@ -105,16 +105,16 @@ class AtomicLoginPage extends StatelessWidget {
       this.subTitleColor,
       this.iconColor,
       this.titleSize,
-      this.subtitleSize, required this.iconSize, required this.fontWeight, required this.onBack, required this.onPressed, required this.onFieldsFilled});
+      this.subtitleSize,
+      required this.iconSize,
+      required this.fontWeight,
+      required this.onPressed,
+      required this.onFieldsFilled,
+      required this.goToRegister});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  AppBar(
-        leading: GestureDetector(
-          onTap: onBack ,
-            child: Icon(Icons.arrow_back_ios)),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -149,12 +149,13 @@ class AtomicLoginPage extends StatelessWidget {
               buttonTextColor: buttonTextColor,
               titleColor: subTitleColor,
               fieldsNumber: fieldsNumber,
-            fontWeightSubtitle: fontWeight,
-            onPressed: onPressed,
-            onFieldsFilled: (values) {
+              fontWeightSubtitle: fontWeight,
+              onPressed: onPressed,
+              onFieldsFilled: (values) {
                 onFieldsFilled.call(values);
-            },
+              },
             ),
+            AtomicButton(label: "Crear cuenta", onPressed: goToRegister)
           ],
         ),
       ),
