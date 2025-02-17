@@ -111,42 +111,44 @@ class AtomicLoginPage extends StatelessWidget {
           onTap: onBack ,
             child: Icon(Icons.arrow_back_ios)),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 30),
-            child: Container(
-              alignment: Alignment.topCenter,
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: AtomicText(
-                      text: title,
-                      fontWeight: FontWeight.bold,
-                      size: TextSize.large,
-                      textAlign: TextAlign.center,
-                      color: titleColor ?? Colors.black),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: Container(
+                alignment: Alignment.topCenter,
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: AtomicText(
+                        text: title,
+                        fontWeight: FontWeight.bold,
+                        size: TextSize.large,
+                        textAlign: TextAlign.center,
+                        color: titleColor ?? Colors.black),
+                  ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 25,
-          ),
-          AtomicTemplateLogin(
-            onLogin: onLogin,
-            icon: icon,
-            iconSize: iconSize,
-            iconColor: iconColor,
-            title: subTitle,
-            labels: labels,
-            buttonText: buttonText,
-            buttonColor: buttonColor,
-            buttonTextColor: buttonTextColor,
-            titleColor: subTitleColor,
-            fieldsNumber: fieldsNumber, fontWeightSubtitle: fontWeight,
-          ),
-        ],
+            const SizedBox(
+              height: 25,
+            ),
+            AtomicTemplateLogin(
+              onLogin: onLogin,
+              icon: icon,
+              iconSize: iconSize,
+              iconColor: iconColor,
+              title: subTitle,
+              labels: labels,
+              buttonText: buttonText,
+              buttonColor: buttonColor,
+              buttonTextColor: buttonTextColor,
+              titleColor: subTitleColor,
+              fieldsNumber: fieldsNumber, fontWeightSubtitle: fontWeight,
+            ),
+          ],
+        ),
       ),
     );
   }
