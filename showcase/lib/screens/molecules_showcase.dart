@@ -1,5 +1,6 @@
 import 'package:atomic_design/molecules/atomic_icon_with_text.dart';
 import 'package:atomic_design/molecules/atomic_textfield_with_label.dart';
+import 'package:atomic_design/molecules/atomic_search_field.dart';
 import 'package:flutter/material.dart';
 
 /// `MoleculesShowcase`
@@ -29,12 +30,12 @@ class MoleculesShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Moléculas")),
-      body: const Column(
+      body: Column(
         children: [
           /// 📌 Ejemplo de `AtomicIconText`
           ///
           /// Un icono de información acompañado de un texto descriptivo.
-          Center(
+          const Center(
             child: AtomicIconText(
               size: 25,
               fontWeight: FontWeight.w600,
@@ -45,14 +46,29 @@ class MoleculesShowcase extends StatelessWidget {
             ),
           ),
 
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
           /// 📌 Ejemplo de `AtomicTextFormFieldWithLabel`
           ///
           /// Un campo de texto con una etiqueta para mostrar su estilo dentro del diseño atómico.
-          Center(
+          const Center(
             child: AtomicTextFormFieldWithLabel(label: "Ejemplo de molécula"),
           ),
+
+          const SizedBox(height: 20),
+
+          /// 📌 Ejemplo de `AtomicSearchField`
+          /// un textfield con un icono de busqueda
+          /// y una funcion que se ejecuta cuando se cambia el valor del campo
+
+          AtomicSearchField(
+            hintText: " Ejemplo de molecula,Buscador",
+            icon: Icons.search,
+            iconColor: Colors.blue,
+            iconSize: 20,
+            onChanged: (value) {},
+          ),
+
         ],
       ),
     );
