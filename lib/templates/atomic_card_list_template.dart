@@ -35,8 +35,7 @@ class AtomicTemplateCardList extends StatelessWidget {
   /// color del título
   final Color? titleColor;
 
-  /// altura de la lista de items
-  final double? containerListHeight;
+
 
   /// peso del titulo
   final FontWeight? fontWeight;
@@ -50,7 +49,6 @@ class AtomicTemplateCardList extends StatelessWidget {
     this.textSize,
     this.titleColor,
     this.fontWeight,
-    this.containerListHeight,
   });
 
   @override
@@ -90,9 +88,8 @@ class AtomicTemplateCardList extends StatelessWidget {
             const SizedBox(height: 16),
 
             // 📌 Lista de tarjetas, adaptada a distintos tamaños de pantalla
-            SizedBox(
-              height: containerListHeight ?? MediaQuery.of(context).size.height *
-                  0.5, // Define la altura del contenedor
+            Expanded(
+            // Define la altura del contenedor
               child: isWideScreen
                   ? GridView.builder(
                       gridDelegate:
