@@ -29,18 +29,21 @@ class PagesShowcase extends StatelessWidget {
       "price": 20.00,
       "image": "https://www.billin.net/blog/wp-content/uploads/2021/06/Im%C3%A1genes-sin-derechos-de-autor.jpeg",
       "category": "Categoría A",
+      "description": "Descripción del producto 1",
     },
     {
       "title": "Producto 2",
       "price": 35.00,
       "image": "https://www.billin.net/blog/wp-content/uploads/2021/06/Im%C3%A1genes-sin-derechos-de-autor.jpeg",
       "category": "Categoría B",
+      "description": "Descripción del producto 2",
     },
     {
       "title": "Producto 3",
       "price": 50.00,
       "image": "https://www.billin.net/blog/wp-content/uploads/2021/06/Im%C3%A1genes-sin-derechos-de-autor.jpeg",
       "category": "Categoría C",
+      "description": "Descripción del producto 3",
     },
   ];
 

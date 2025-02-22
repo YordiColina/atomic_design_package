@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import '../atoms/atomic_text.dart';
-import '../organism/atomic_card.dart';
+import '../organism/atomic_detail_card.dart';
 
 /// Un contenedor con un título y una lista de tarjetas dinámicas.
 ///
@@ -35,7 +35,7 @@ class AtomicTemplateCardList extends StatelessWidget {
   /// color del título
   final Color? titleColor;
 
-
+  final double? heightOfContainerList;
 
   /// peso del titulo
   final FontWeight? fontWeight;
@@ -49,6 +49,7 @@ class AtomicTemplateCardList extends StatelessWidget {
     this.textSize,
     this.titleColor,
     this.fontWeight,
+    this.heightOfContainerList,
   });
 
   @override
@@ -88,7 +89,7 @@ class AtomicTemplateCardList extends StatelessWidget {
             const SizedBox(height: 16),
 
             // 📌 Lista de tarjetas, adaptada a distintos tamaños de pantalla
-            Expanded(
+        heightOfContainerList == null ?    Expanded(
             // Define la altura del contenedor
               child: isWideScreen
                   ? GridView.builder(
@@ -102,11 +103,12 @@ class AtomicTemplateCardList extends StatelessWidget {
                       itemCount: items.length,
                       itemBuilder: (context, index) {
                         final item = items[index];
-                        return AtomicCard(
+                        return AtomicDetailCard(
                           titulo: item['title'],
                           precio: item['price'],
                           imageUrl: item['image'],
                           categoria: item['category'],
+                          descripcion: item['description'],
                         );
                       },
                     )
@@ -116,13 +118,51 @@ class AtomicTemplateCardList extends StatelessWidget {
                         final item = items[index];
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 16),
-                          child: AtomicCard(
+                          child: AtomicDetailCard(
                             titulo: item['title'],
                             precio: item['price'],
                             imageUrl: item['image'],
                             categoria: item['category'],
-                          ),
+                            descripcion: item['description'],
+                        ));
+                      },
+                    ),
+            ) : Container(
+              height: heightOfContainerList,
+              child: isWideScreen
+                  ? GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2, // Dos columnas en pantallas grandes
+                        crossAxisSpacing: 16,
+                        mainAxisSpacing: 16,
+                        childAspectRatio: 3 / 4, // Proporción de la tarjeta
+                      ),
+                      itemCount: items.length,
+                      itemBuilder: (context, index) {
+                        final item = items[index];
+                        return AtomicDetailCard(
+                          titulo: item['title'],
+                          precio: item['price'],
+                          imageUrl: item['image'],
+                          categoria: item['category'],
+                          descripcion: item['description'],
                         );
+                      },
+                    )
+                  : ListView.builder(
+                      itemCount: items.length,
+                      itemBuilder: (context, index) {
+                        final item = items[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 16),
+                          child: AtomicDetailCard(
+                            titulo: item['title'],
+                            precio: item['price'],
+                            imageUrl: item['image'],
+                            categoria: item['category'],
+                            descripcion: item['description'],
+                        ));
                       },
                     ),
             ),

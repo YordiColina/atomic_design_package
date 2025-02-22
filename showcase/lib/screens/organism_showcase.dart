@@ -47,7 +47,7 @@ class OrganismsShowcase extends StatelessWidget {
               const SizedBox(height: 16),
 
               /// 📌 Ejemplo de `AtomicDetailCard`
-              ///
+              /// incluye imagen, título, precio, categoría y descripción.
               /// Tarjeta más detallada que incluye descripción del producto.
               const AtomicDetailCard(
                 titulo: "Ejemplo detail card",

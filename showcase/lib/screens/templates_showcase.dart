@@ -37,6 +37,7 @@ class TemplatesShowcase extends StatelessWidget {
         "image":
             "https://www.billin.net/blog/wp-content/uploads/2021/06/Im%C3%A1genes-sin-derechos-de-autor.jpeg",
         "category": "Categoría A",
+        'description': 'Descripcion del producto 1'
       },
       {
         "title": "Producto 2",
@@ -44,6 +45,7 @@ class TemplatesShowcase extends StatelessWidget {
         "image":
             "https://www.billin.net/blog/wp-content/uploads/2021/06/Im%C3%A1genes-sin-derechos-de-autor.jpeg",
         "category": "Categoría B",
+        'description': 'Descripcion del producto 2'
       },
     ];
 
@@ -65,6 +67,7 @@ class TemplatesShowcase extends StatelessWidget {
               /// Plantilla que muestra una lista de tarjetas con datos dinámicos.
               AtomicTemplateCardList(
                 title: "Ejemplo de Plantilla de lista de cards",
+                heightOfContainerList: MediaQuery.of(context).size.height * 0.5,
                 items: items,
               ),
 
