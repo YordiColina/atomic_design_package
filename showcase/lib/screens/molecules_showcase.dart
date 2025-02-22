@@ -1,5 +1,6 @@
 import 'package:atomic_design/molecules/atomic_icon_with_text.dart';
 import 'package:atomic_design/molecules/atomic_textfield_with_label.dart';
+import 'package:atomic_design/molecules/atomic_dropdown_button.dart';
 import 'package:atomic_design/molecules/atomic_search_field.dart';
 import 'package:flutter/material.dart';
 
@@ -68,6 +69,19 @@ class MoleculesShowcase extends StatelessWidget {
             iconSize: 20,
             onChanged: (value) {},
           ),
+
+          const SizedBox(height: 20),
+
+          /// 📌 Ejemplo de `AtomicDropdownButton`
+          /// un dropdown con una lista de items
+          /// y una funcion que se ejecuta cuando se cambia el valor del campo
+
+          AtomicDropdownButton(
+           items: ["item1","item2","item3"],
+           hintText: "Ejemplo de molecula,Dropdown",
+           onChanged: (value) {},
+         )
+
 
         ],
       ),
