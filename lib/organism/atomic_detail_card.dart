@@ -80,7 +80,7 @@ class AtomicDetailCard extends StatelessWidget {
 
                 // 📄 Descripción del producto
                 AtomicText(
-                  text: "sdasdsadasd",
+                  text: descripcion,
                   size: TextSize.small,
                   fontWeight: FontWeight.normal,
                   textAlign: TextAlign.end,
