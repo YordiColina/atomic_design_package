@@ -74,10 +74,10 @@ class AtomicButton extends StatelessWidget {
           vertical: _getPadding(),
           horizontal: _getPadding() * 2,
         ),
-        textStyle: TextStyle(fontSize: _getFontSize()),
+        textStyle: TextStyle(fontSize: _getFontSize(),fontFamily: 'Stars'),
         backgroundColor: color ?? const Color.fromRGBO(158, 123, 187, 1.0),
       ),
-      child: Text(label, style: TextStyle(color: textColor ?? Colors.white)),
+      child: Text(label, style: TextStyle(color: textColor ?? Colors.white, fontFamily: 'Stars')),
     );
   }
 }

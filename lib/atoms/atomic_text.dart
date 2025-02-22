@@ -52,17 +52,20 @@ class AtomicText extends StatelessWidget {
         return Theme.of(context).textTheme.bodySmall!.copyWith(
           color: color,
           fontWeight: fontWeight,
+            fontFamily: 'Stars'
         );
       case TextSize.large:
         return Theme.of(context).textTheme.headlineSmall!.copyWith(
           color: color,
           fontWeight: fontWeight,
+            fontFamily: 'Stars'
         );
       case TextSize.medium:
       default:
         return Theme.of(context).textTheme.bodyMedium!.copyWith(
           color: color,
           fontWeight: fontWeight,
+            fontFamily: 'Stars'
         );
     }
   }
