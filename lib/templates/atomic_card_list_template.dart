@@ -35,6 +35,9 @@ class AtomicTemplateCardList extends StatelessWidget {
   /// color del título
   final Color? titleColor;
 
+  /// Función del onTap de la tarjeta
+  final Function()? onTapFunction;
+
   final double? heightOfContainerList;
 
   /// peso del titulo
@@ -49,7 +52,7 @@ class AtomicTemplateCardList extends StatelessWidget {
     this.textSize,
     this.titleColor,
     this.fontWeight,
-    this.heightOfContainerList,
+    this.heightOfContainerList, this.onTapFunction,
   });
 
   @override
@@ -103,12 +106,15 @@ class AtomicTemplateCardList extends StatelessWidget {
                       itemCount: items.length,
                       itemBuilder: (context, index) {
                         final item = items[index];
-                        return AtomicDetailCard(
-                          titulo: item['title'],
-                          precio: item['price'],
-                          imageUrl: item['image'],
-                          categoria: item['category'],
-                          descripcion: item['description'],
+                        return GestureDetector(
+                          onTap: () {onTapFunction;},
+                          child: AtomicDetailCard(
+                            titulo: item['title'],
+                            precio: item['price'],
+                            imageUrl: item['image'],
+                            categoria: item['category'],
+                            descripcion: item['description'],
+                          ),
                         );
                       },
                     )
@@ -118,16 +124,19 @@ class AtomicTemplateCardList extends StatelessWidget {
                         final item = items[index];
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 16),
-                          child: AtomicDetailCard(
-                            titulo: item['title'],
-                            precio: item['price'],
-                            imageUrl: item['image'],
-                            categoria: item['category'],
-                            descripcion: item['description'],
-                        ));
+                          child: GestureDetector(
+                            onTap: () {onTapFunction;},
+                            child: AtomicDetailCard(
+                              titulo: item['title'],
+                              precio: item['price'],
+                              imageUrl: item['image'],
+                              categoria: item['category'],
+                              descripcion: item['description'],
+                                                    ),
+                          ));
                       },
                     ),
-            ) : Container(
+            ) : SizedBox(
               height: heightOfContainerList,
               child: isWideScreen
                   ? GridView.builder(
@@ -141,12 +150,16 @@ class AtomicTemplateCardList extends StatelessWidget {
                       itemCount: items.length,
                       itemBuilder: (context, index) {
                         final item = items[index];
-                        return AtomicDetailCard(
-                          titulo: item['title'],
-                          precio: item['price'],
-                          imageUrl: item['image'],
-                          categoria: item['category'],
-                          descripcion: item['description'],
+                        return GestureDetector(
+
+                          onTap: () {onTapFunction;},
+                          child: AtomicDetailCard(
+                            titulo: item['title'],
+                            precio: item['price'],
+                            imageUrl: item['image'],
+                            categoria: item['category'],
+                            descripcion: item['description'],
+                          ),
                         );
                       },
                     )
@@ -156,13 +169,16 @@ class AtomicTemplateCardList extends StatelessWidget {
                         final item = items[index];
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 16),
-                          child: AtomicDetailCard(
-                            titulo: item['title'],
-                            precio: item['price'],
-                            imageUrl: item['image'],
-                            categoria: item['category'],
-                            descripcion: item['description'],
-                        ));
+                          child: GestureDetector(
+                            onTap: () {onTapFunction;},
+                            child: AtomicDetailCard(
+                              titulo: item['title'],
+                              precio: item['price'],
+                              imageUrl: item['image'],
+                              categoria: item['category'],
+                              descripcion: item['description'],
+                                                    ),
+                          ));
                       },
                     ),
             ),
