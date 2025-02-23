@@ -72,7 +72,7 @@ class AtomicDetailCard extends StatelessWidget {
                       imageUrl,
                       width: 250,
                       height: 250,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),
