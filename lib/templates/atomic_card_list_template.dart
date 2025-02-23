@@ -107,7 +107,8 @@ class AtomicTemplateCardList extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final item = items[index];
                         return GestureDetector(
-                          onTap: () {onTapFunction ?? item['onTapFunction'];},
+                          onTap: () {  final Function()? callback = onTapFunction ?? item['onTapFunction'];
+                          callback?.call();},
                           child: AtomicDetailCard(
                             titulo: item['title'],
                             precio: item['price'],
@@ -125,7 +126,8 @@ class AtomicTemplateCardList extends StatelessWidget {
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 16),
                           child: GestureDetector(
-                            onTap: () {onTapFunction ?? item['onTapFunction'];},
+                            onTap: () {  final Function()? callback = onTapFunction ?? item['onTapFunction'];
+                            callback?.call();},
                             child: AtomicDetailCard(
                               titulo: item['title'],
                               precio: item['price'],
@@ -152,7 +154,8 @@ class AtomicTemplateCardList extends StatelessWidget {
                         final item = items[index];
                         return GestureDetector(
 
-                          onTap: () {onTapFunction ?? item['onTapFunction'];},
+                          onTap: () {  final Function()? callback = onTapFunction ?? item['onTapFunction'];
+                          callback?.call();},
                           child: AtomicDetailCard(
                             titulo: item['title'],
                             precio: item['price'],
@@ -170,7 +173,8 @@ class AtomicTemplateCardList extends StatelessWidget {
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 16),
                           child: GestureDetector(
-                            onTap: () {onTapFunction ?? item['onTapFunction'];},
+                            onTap: () {  final Function()? callback = onTapFunction ?? item['onTapFunction'];
+                            callback?.call();},
                             child: AtomicDetailCard(
                               titulo: item['title'],
                               precio: item['price'],
