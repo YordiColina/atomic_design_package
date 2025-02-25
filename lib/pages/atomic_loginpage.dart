@@ -37,8 +37,12 @@ class AtomicLoginPage extends StatelessWidget {
   /// tamaño del texto del titulo
   final TextSize? titleSize;
 
+  /// color del botón de registro
+  final Color? secundaryButtonColor;
+
   /// color del titulo
   final Color? titleColor;
+
 
   /// Título que se muestra en la parte superior del formulario.
   ///  Ejemplo: "Iniciar sesión"
@@ -110,7 +114,7 @@ class AtomicLoginPage extends StatelessWidget {
       required this.fontWeight,
       required this.onPressed,
       required this.onFieldsFilled,
-      required this.goToRegister});
+      required this.goToRegister, this.secundaryButtonColor});
 
   @override
   Widget build(BuildContext context) {
@@ -140,6 +144,7 @@ class AtomicLoginPage extends StatelessWidget {
             ),
             AtomicTemplateLogin(
               icon: icon,
+              textLabelColor: textColorLabel,
               iconSize: iconSize,
               iconColor: iconColor,
               title: subTitle,
@@ -155,7 +160,7 @@ class AtomicLoginPage extends StatelessWidget {
                 onFieldsFilled.call(values);
               },
             ),
-            AtomicButton(label: "Crear cuenta", onPressed: goToRegister)
+            AtomicButton(label: "Crear cuenta", onPressed: goToRegister,color: secundaryButtonColor,)
           ],
         ),
       ),
