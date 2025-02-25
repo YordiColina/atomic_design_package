@@ -52,12 +52,14 @@ class AtomicText extends StatelessWidget {
         return Theme.of(context).textTheme.bodySmall!.copyWith(
           color: color,
           fontWeight: fontWeight,
+            overflow: TextOverflow.ellipsis,
             fontFamily: 'Stars'
         );
       case TextSize.large:
         return Theme.of(context).textTheme.headlineSmall!.copyWith(
           color: color,
           fontWeight: fontWeight,
+            overflow: TextOverflow.ellipsis,
             fontFamily: 'Stars'
         );
       case TextSize.medium:
@@ -66,6 +68,7 @@ class AtomicText extends StatelessWidget {
           color: color,
           fontSize: 18,
           fontWeight: fontWeight,
+            overflow: TextOverflow.ellipsis,
             fontFamily: 'Stars'
         );
     }
