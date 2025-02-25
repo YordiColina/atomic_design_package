@@ -19,6 +19,12 @@ class AtomicDetailCard extends StatelessWidget {
   /// La URL de la imagen del producto o artículo.
   final String imageUrl;
 
+  /// El color de la tarjeta.
+  final Color? cardColor;
+
+  /// El color del borde la tarjeta.
+  final Color? borderCardColor;
+
   /// La categoría a la que pertenece el producto o artículo.
   final String categoria;
 
@@ -33,6 +39,8 @@ class AtomicDetailCard extends StatelessWidget {
     required this.imageUrl,
     required this.categoria,
     required this.descripcion,
+    this.cardColor,
+    this.borderCardColor,
   });
 
   @override
@@ -42,11 +50,11 @@ class AtomicDetailCard extends StatelessWidget {
       child: SizedBox(
         child: Card(
           elevation: 4,
-          color: const Color.fromRGBO(240, 240, 240, 1),
+          color: cardColor ?? const Color.fromRGBO(240, 240, 240, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
-            side: const BorderSide(
-              color: Color.fromRGBO(158, 123, 187, 1.0),
+            side: BorderSide(
+              color: borderCardColor ?? const Color.fromRGBO(158, 123, 187, 1.0),
               width: 0.5,
             ),
           ),

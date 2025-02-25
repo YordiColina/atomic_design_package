@@ -35,6 +35,12 @@ class AtomicTemplateCardList extends StatelessWidget {
   /// color del título
   final Color? titleColor;
 
+  /// El color de la tarjeta.
+  final Color? cardColor;
+
+  /// El color del borde la tarjeta.
+  final Color? borderCardColor;
+
   /// Función del onTap de la tarjeta
   final Function()? onTapFunction;
 
@@ -52,7 +58,7 @@ class AtomicTemplateCardList extends StatelessWidget {
     this.textSize,
     this.titleColor,
     this.fontWeight,
-    this.heightOfContainerList, this.onTapFunction,
+    this.heightOfContainerList, this.onTapFunction, this.cardColor, this.borderCardColor,
   });
 
   @override
@@ -110,6 +116,8 @@ class AtomicTemplateCardList extends StatelessWidget {
                           onTap: () {  final Function()? callback = onTapFunction ?? item['onTapFunction'];
                           callback?.call();},
                           child: AtomicDetailCard(
+                            cardColor: cardColor,
+                            borderCardColor: borderCardColor,
                             titulo: item['title'],
                             precio: item['price'],
                             imageUrl: item['image'],
@@ -129,6 +137,8 @@ class AtomicTemplateCardList extends StatelessWidget {
                             onTap: () {  final Function()? callback = onTapFunction ?? item['onTapFunction'];
                             callback?.call();},
                             child: AtomicDetailCard(
+                              cardColor: cardColor,
+                              borderCardColor: borderCardColor,
                               titulo: item['title'],
                               precio: item['price'],
                               imageUrl: item['image'],
@@ -157,6 +167,8 @@ class AtomicTemplateCardList extends StatelessWidget {
                           onTap: () {  final Function()? callback = onTapFunction ?? item['onTapFunction'];
                           callback?.call();},
                           child: AtomicDetailCard(
+                            cardColor: cardColor,
+                            borderCardColor: borderCardColor,
                             titulo: item['title'],
                             precio: item['price'],
                             imageUrl: item['image'],
@@ -176,6 +188,8 @@ class AtomicTemplateCardList extends StatelessWidget {
                             onTap: () {  final Function()? callback = onTapFunction ?? item['onTapFunction'];
                             callback?.call();},
                             child: AtomicDetailCard(
+                              cardColor: cardColor,
+                              borderCardColor: borderCardColor,
                               titulo: item['title'],
                               precio: item['price'],
                               imageUrl: item['image'],
