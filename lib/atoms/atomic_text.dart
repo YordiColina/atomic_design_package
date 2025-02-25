@@ -64,6 +64,7 @@ class AtomicText extends StatelessWidget {
       default:
         return Theme.of(context).textTheme.bodyMedium!.copyWith(
           color: color,
+          fontSize: 18,
           fontWeight: fontWeight,
             fontFamily: 'Stars'
         );
