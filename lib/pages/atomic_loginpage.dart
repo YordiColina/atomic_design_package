@@ -73,6 +73,9 @@ class AtomicLoginPage extends StatelessWidget {
   /// El peso de la fuente del texto.
   final FontWeight fontWeight;
 
+  /// Indica si el campo de texto es de tipo contraseña.
+  final bool? obscureText;
+
   /// El color del texto del label.
   final Color? textColorLabel;
 
@@ -114,7 +117,7 @@ class AtomicLoginPage extends StatelessWidget {
       required this.fontWeight,
       required this.onPressed,
       required this.onFieldsFilled,
-      required this.goToRegister, this.secundaryButtonColor});
+      required this.goToRegister, this.secundaryButtonColor, this.obscureText});
 
   @override
   Widget build(BuildContext context) {
@@ -144,6 +147,7 @@ class AtomicLoginPage extends StatelessWidget {
             ),
             AtomicTemplateLogin(
               icon: icon,
+              obscureText: obscureText,
               textLabelColor: textColorLabel,
               iconSize: iconSize,
               iconColor: iconColor,

@@ -6,8 +6,6 @@
  * Es adaptable a diferentes tamaños de pantalla.
  */
 
-
-
 import 'package:flutter/material.dart';
 import '../atoms/atomic_text.dart';
 import '../molecules/atomic_icon_with_text.dart';
@@ -18,7 +16,6 @@ import '../organism/Atomic_form.dart';
 /// Contiene un formulario con los campos necesarios y un botón de envío.
 /// Permite manejar la autenticación a través de un callback.
 class AtomicTemplateLogin extends StatefulWidget {
-
   /// Función que se ejecutará cuando se presione el botón.
   final VoidCallback onPressed;
 
@@ -64,6 +61,9 @@ class AtomicTemplateLogin extends StatefulWidget {
   /// El color del texto del label.
   final Color? textLabelColor;
 
+  /// Indica si el campo de texto es de tipo contraseña.
+  final bool? obscureText;
+
   /// El tamaño del texto, que afecta su estilo.
   /// Por defecto, usa [TextSize.medium].
   final TextSize? sizeOfLabelText;
@@ -86,7 +86,12 @@ class AtomicTemplateLogin extends StatefulWidget {
       this.textLabelColor,
       this.sizeOfLabelText,
       this.fontWeightLabelText,
-      this.titleSize, required this.iconSize, required this.fontWeightSubtitle, required this.onPressed, required this.onFieldsFilled});
+      this.titleSize,
+      required this.iconSize,
+      required this.fontWeightSubtitle,
+      required this.onPressed,
+      required this.onFieldsFilled,
+      this.obscureText});
 
   @override
   _AtomicTemplateLoginState createState() => _AtomicTemplateLoginState();
@@ -106,7 +111,6 @@ class _AtomicTemplateLoginState extends State<AtomicTemplateLogin> {
   ///
   /// Verifica que los campos no estén vacíos y ejecuta la función `onLogin`
   /// proporcionada en el widget padre.
-
 
   @override
   Widget build(BuildContext context) {
@@ -137,6 +141,7 @@ class _AtomicTemplateLoginState extends State<AtomicTemplateLogin> {
               fieldCount: widget.fieldsNumber,
               buttonText: widget.buttonText,
               labels: widget.labels,
+              obscureText: widget.obscureText,
               buttonColor: widget.buttonColor,
               buttonTextColor: widget.buttonTextColor,
               onPressed: widget.onPressed,

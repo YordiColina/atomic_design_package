@@ -33,6 +33,9 @@ class AtomicForm extends StatefulWidget {
   /// Función que se ejecutará cuando se presione el botón.
   final VoidCallback onPressed;
 
+  /// Indica si el campo de texto es de tipo contraseña.
+  final bool? obscureText;
+
   /// Callback que devuelve una lista de String con los valores indicando si los campos están llenos.
   final Function(List<String>) onFieldsFilled;
 
@@ -41,6 +44,7 @@ class AtomicForm extends StatefulWidget {
     super.key,
     required this.fieldCount,
     required this.buttonText,
+
     required this.labels,
     required this.onPressed,
     required this.onFieldsFilled,
@@ -48,7 +52,7 @@ class AtomicForm extends StatefulWidget {
     this.buttonTextColor,
     this.textColor,
     this.size,
-    this.fontWeight,
+    this.fontWeight, this.obscureText,
   });
 
   @override
@@ -119,6 +123,7 @@ class _AtomicFormState extends State<AtomicForm> {
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: AtomicTextFormFieldWithLabel(
                   label: widget.labels[i],
+                  obscureText: widget.obscureText ?? false,
                   controller: _controllers[i],
                   validator: (value) {
                     if (value == null || value.isEmpty) {
