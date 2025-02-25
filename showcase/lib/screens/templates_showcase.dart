@@ -2,6 +2,7 @@ import 'package:atomic_design/atoms/atomic_text.dart';
 import 'package:atomic_design/templates/atomic_card_list_template.dart';
 import 'package:atomic_design/templates/atomic_login_template.dart';
 import 'package:atomic_design/templates/atomic_register_template.dart';
+import 'package:atomic_design/templates/Atomic_horizontal_card_list_template.dart';
 import 'package:flutter/material.dart';
 
 /// `TemplatesShowcase`
@@ -121,6 +122,15 @@ class TemplatesShowcase extends StatelessWidget {
                 buttonText: "Registrar",
                 fieldsNumber: 3,
                 iconSize: 50,
+              ),
+
+              const SizedBox(height: 20),
+              const Divider(thickness: 2, color: Colors.black),
+
+              AtomicHorizontalCardListTemplate(
+                heightOfContainerList: 400,
+                title: "Ofertas Especiales",
+                items: items,
               ),
             ],
           ),
