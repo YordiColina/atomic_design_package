@@ -121,14 +121,17 @@ class _AtomicHorizontalCardListTemplateState
                             widget.onTapFunction ?? item['onTapFunction'];
                         callback?.call();
                       },
-                      child: AtomicDetailCard(
-                        cardColor: widget.cardColor,
-                        borderCardColor: widget.borderCardColor,
-                        titulo: item['title'],
-                        precio: item['price'],
-                        imageUrl: item['image'],
-                        categoria: item['category'],
-                        descripcion: item['description'],
+                      child: SizedBox(
+                        width: 300,
+                        child: AtomicDetailCard(
+                          cardColor: widget.cardColor,
+                          borderCardColor: widget.borderCardColor,
+                          titulo: item['title'],
+                          precio: item['price'],
+                          imageUrl: item['image'],
+                          categoria: item['category'],
+                          descripcion: item['description'],
+                        ),
                       ),
                     ),
                   );

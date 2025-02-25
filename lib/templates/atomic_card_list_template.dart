@@ -35,6 +35,9 @@ class AtomicTemplateCardList extends StatelessWidget {
   /// color del título
   final Color? titleColor;
 
+  /// El color de la letra tarjeta.
+  final Color? cardTextColor;
+
   /// El color de la tarjeta.
   final Color? cardColor;
 
@@ -58,7 +61,11 @@ class AtomicTemplateCardList extends StatelessWidget {
     this.textSize,
     this.titleColor,
     this.fontWeight,
-    this.heightOfContainerList, this.onTapFunction, this.cardColor, this.borderCardColor,
+    this.heightOfContainerList,
+    this.onTapFunction,
+    this.cardColor,
+    this.borderCardColor,
+    this.cardTextColor,
   });
 
   @override
@@ -116,6 +123,7 @@ class AtomicTemplateCardList extends StatelessWidget {
                           onTap: () {  final Function()? callback = onTapFunction ?? item['onTapFunction'];
                           callback?.call();},
                           child: AtomicDetailCard(
+                            cardTextColor: cardTextColor,
                             cardColor: cardColor,
                             borderCardColor: borderCardColor,
                             titulo: item['title'],
@@ -138,6 +146,7 @@ class AtomicTemplateCardList extends StatelessWidget {
                             callback?.call();},
                             child: AtomicDetailCard(
                               cardColor: cardColor,
+                              cardTextColor: cardTextColor,
                               borderCardColor: borderCardColor,
                               titulo: item['title'],
                               precio: item['price'],
@@ -168,6 +177,7 @@ class AtomicTemplateCardList extends StatelessWidget {
                           callback?.call();},
                           child: AtomicDetailCard(
                             cardColor: cardColor,
+                            cardTextColor: cardTextColor,
                             borderCardColor: borderCardColor,
                             titulo: item['title'],
                             precio: item['price'],
@@ -189,6 +199,7 @@ class AtomicTemplateCardList extends StatelessWidget {
                             callback?.call();},
                             child: AtomicDetailCard(
                               cardColor: cardColor,
+                              cardTextColor: cardTextColor,
                               borderCardColor: borderCardColor,
                               titulo: item['title'],
                               precio: item['price'],

@@ -22,6 +22,9 @@ class AtomicDetailCard extends StatelessWidget {
   /// El color de la tarjeta.
   final Color? cardColor;
 
+  /// El color de la letra tarjeta.
+  final Color? cardTextColor;
+
   /// El color del borde la tarjeta.
   final Color? borderCardColor;
 
@@ -40,7 +43,7 @@ class AtomicDetailCard extends StatelessWidget {
     required this.categoria,
     required this.descripcion,
     this.cardColor,
-    this.borderCardColor,
+    this.borderCardColor, this.cardTextColor,
   });
 
   @override
@@ -66,6 +69,7 @@ class AtomicDetailCard extends StatelessWidget {
                 // 🏷️ Título del producto
                 AtomicText(
                   text: titulo,
+                  color: cardTextColor ?? Colors.black,
                   size: TextSize.medium,
                   fontWeight: FontWeight.bold,
                   textAlign: TextAlign.center,
@@ -89,10 +93,10 @@ class AtomicDetailCard extends StatelessWidget {
                 // 📄 Descripción del producto
                 AtomicText(
                   text: descripcion,
+                  color: cardTextColor ?? Colors.black,
                   size: TextSize.small,
                   fontWeight: FontWeight.normal,
                   textAlign: TextAlign.end,
-                  color: Colors.black54,
                 ),
                 const SizedBox(height: 12),
 
@@ -105,7 +109,7 @@ class AtomicDetailCard extends StatelessWidget {
                       text: "\$${precio.toStringAsFixed(2)}",
                       size: TextSize.small,
                       fontWeight: FontWeight.bold,
-                      color: Colors.green[700],
+                      color: cardTextColor ?? Colors.green[700],
                       textAlign: TextAlign.left,
                     ),
                     // Categoría con color gris
@@ -113,7 +117,7 @@ class AtomicDetailCard extends StatelessWidget {
                       text: categoria,
                       size: TextSize.small,
                       fontWeight: FontWeight.w500,
-                      color: Colors.grey[700],
+                      color: cardTextColor ?? Colors.grey[700],
                       textAlign: TextAlign.right,
                     ),
                   ],
