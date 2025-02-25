@@ -87,6 +87,7 @@ class _AtomicTextFormFieldWithLabelState extends State<AtomicTextFormFieldWithLa
             obscureText: widget.obscureText,
             keyboardType: widget.keyboardType,
             validator: widget.validator,
+
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
