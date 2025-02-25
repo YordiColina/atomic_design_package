@@ -53,7 +53,10 @@ class MoleculesShowcase extends StatelessWidget {
           ///
           /// Un campo de texto con una etiqueta para mostrar su estilo dentro del diseño atómico.
           const Center(
-            child: AtomicTextFormFieldWithLabel(label: "Ejemplo de molécula"),
+            child: Padding(
+              padding: EdgeInsets.only(left: 20,right: 20),
+              child: AtomicTextFormFieldWithLabel(label: "Ejemplo de molécula"),
+            ),
           ),
 
           const SizedBox(height: 20),
@@ -62,12 +65,15 @@ class MoleculesShowcase extends StatelessWidget {
           /// un textfield con un icono de busqueda
           /// y una funcion que se ejecuta cuando se cambia el valor del campo
 
-          AtomicSearchField(
-            hintText: " Ejemplo de molecula,Buscador",
-            icon: Icons.search,
-            iconColor: Colors.blue,
-            iconSize: 20,
-            onChanged: (value) {},
+          Padding(
+            padding: const EdgeInsets.only(left: 20,right: 20),
+            child: AtomicSearchField(
+              hintText: " Ejemplo de molecula,Buscador",
+              icon: Icons.search,
+              iconColor: Colors.blue,
+              iconSize: 20,
+              onChanged: (value) {},
+            ),
           ),
 
           const SizedBox(height: 20),
@@ -76,11 +82,14 @@ class MoleculesShowcase extends StatelessWidget {
           /// un dropdown con una lista de items
           /// y una funcion que se ejecuta cuando se cambia el valor del campo
 
-          AtomicDropdownButton(
-           items: ["item1","item2","item3"],
-           hintText: "Ejemplo de molecula,Dropdown",
-           onChanged: (value) {},
-         )
+          Padding(
+            padding: const EdgeInsets.only(left: 20,right: 20),
+            child: AtomicDropdownButton(
+             items: ["item1","item2","item3"],
+             hintText: "Ejemplo de molecula,Dropdown",
+             onChanged: (value) {},
+                     ),
+          )
 
 
         ],

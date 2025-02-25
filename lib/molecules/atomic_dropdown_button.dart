@@ -30,6 +30,7 @@ class _AtomicDropdownState extends State<AtomicDropdownButton> {
     return DropdownButtonFormField<String>(
       value: _selectedValue,
       dropdownColor: widget.dropdownColor ?? Colors.white,
+      borderRadius: BorderRadius.circular(widget.borderRadius),
       decoration: InputDecoration(
         filled: true,
         fillColor: widget.dropdownColor ?? Colors.white,
