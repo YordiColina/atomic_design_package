@@ -123,7 +123,8 @@ class _AtomicFormState extends State<AtomicForm> {
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: AtomicTextFormFieldWithLabel(
                   label: widget.labels[i],
-                  obscureText: widget.obscureText ?? false,
+                  obscureText: (widget.labels[i] == "password" || widget.labels[i] == "contraseña") &&
+                  widget.obscureText != false  ? true : false,
                   controller: _controllers[i],
                   validator: (value) {
                     if (value == null || value.isEmpty) {
