@@ -3,16 +3,39 @@ import '../atoms/atomic_text.dart';
 import '../organism/atomic_detail_card.dart';
 
 class AtomicHorizontalCardListTemplate extends StatefulWidget {
+
+/// Título que se mostrará en la parte superior del componente.
   final String title;
+
+  /// Lista de elementos que se representarán como tarjetas.
   final dynamic items;
+
+  /// color de fondo de la lista de items
   final Color? backgroundListColor;
+
+  /// tamaño del titulo
   final TextSize? textSize;
+
+  /// color del título
   final Color? titleColor;
+
+  /// El color de la tarjeta.
   final Color? cardColor;
+
+  /// El color del borde la tarjeta.
   final Color? borderCardColor;
+
+  /// Función del onTap de la tarjeta
   final Function()? onTapFunction;
+
+  /// altura de la lista de items
   final double? heightOfContainerList;
+
+  /// peso de la fuente
   final FontWeight? fontWeight;
+
+  /// El color de la letra tarjeta.
+  final Color? cardTextColor;
 
   const AtomicHorizontalCardListTemplate({
     super.key,
@@ -25,7 +48,7 @@ class AtomicHorizontalCardListTemplate extends StatefulWidget {
     this.heightOfContainerList,
     this.onTapFunction,
     this.cardColor,
-    this.borderCardColor,
+    this.borderCardColor, this.cardTextColor,
   });
 
   @override
@@ -125,6 +148,7 @@ class _AtomicHorizontalCardListTemplateState
                         width: 300,
                         child: AtomicDetailCard(
                           cardColor: widget.cardColor,
+                          cardTextColor: widget.cardTextColor,
                           borderCardColor: widget.borderCardColor,
                           titulo: item['title'],
                           precio: item['price'],
@@ -157,6 +181,7 @@ class _AtomicHorizontalCardListTemplateState
                         width: 300,
                         child: AtomicDetailCard(
                           cardColor: widget.cardColor,
+                          cardTextColor: widget.cardTextColor,
                           borderCardColor: widget.borderCardColor,
                           titulo: item['title'],
                           precio: item['price'],
