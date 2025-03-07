@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import '../atoms/atomic_text.dart';
 import '../organism/atomic_detail_card.dart';
@@ -60,6 +62,7 @@ class _AtomicHorizontalCardListTemplateState
     extends State<AtomicHorizontalCardListTemplate> {
   final ScrollController _scrollController = ScrollController();
   bool _isScrollingForward = true;
+  Timer? _scrollTimer;
 
   @override
   void initState() {
@@ -69,31 +72,36 @@ class _AtomicHorizontalCardListTemplateState
     });
   }
 
-  void _startAutoScroll() async {
-    while (mounted) {
-      if (_scrollController.hasClients) {
-        double maxScroll = _scrollController.position.maxScrollExtent;
-        double minScroll = _scrollController.position.minScrollExtent;
-        double targetScroll = _isScrollingForward ? maxScroll : minScroll;
 
-        await _scrollController.animateTo(
+  void _startAutoScroll() {
+    if (!mounted || !_scrollController.hasClients) return;
+
+    double maxScroll = _scrollController.position.maxScrollExtent;
+    double minScroll = _scrollController.position.minScrollExtent;
+    double targetScroll = _isScrollingForward ? maxScroll : minScroll;
+
+    _scrollTimer = Timer(const Duration(seconds: 1), () {
+      if (mounted && _scrollController.hasClients) {
+        _scrollController.animateTo(
           targetScroll,
           duration: const Duration(seconds: 4),
           curve: Curves.linear,
-        );
+        ).then((_) {
+          if (mounted) {
+            setState(() {
+              _isScrollingForward = !_isScrollingForward;
+            });
 
-        if (mounted) {
-          setState(() {
-            _isScrollingForward = !_isScrollingForward;
-          });
-        }
+            _startAutoScroll();
+          }
+        });
       }
-      await Future.delayed(const Duration(seconds: 1));
-    }
+    });
   }
 
   @override
   void dispose() {
+    _scrollTimer?.cancel(); // 🔴 Cancelamos el Timer al desmontar el widget
     _scrollController.dispose();
     super.dispose();
   }

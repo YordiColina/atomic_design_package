@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AtomicSearchField extends StatefulWidget {
+class AtomicSearchField extends StatelessWidget {
   final TextEditingController? controller;
   final ValueChanged<String>? onChanged;
   final IconData? icon;
@@ -27,45 +27,31 @@ class AtomicSearchField extends StatefulWidget {
   });
 
   @override
-  State<AtomicSearchField> createState() => _AtomicSearchFieldState();
-}
-
-class _AtomicSearchFieldState extends State<AtomicSearchField> {
-  TextEditingController? _internalController;
-
-  @override
-  void initState() {
-    super.initState();
-    // Si no se proporciona un controller, creamos uno interno
-    _internalController = widget.controller ?? TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    // Solo eliminamos el controlador si lo creamos nosotros
-    if (widget.controller == null) {
-      _internalController?.dispose();
-    }
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: _internalController,
-      onChanged: widget.onChanged,
+      controller: controller ?? TextEditingController(),
+      onChanged: onChanged,
       decoration: InputDecoration(
-        hintText: widget.hintText,
+        hintText: hintText,
         filled: true,
-        fillColor: widget.fillColor ?? Colors.white,
-        hintStyle: widget.hintStyle ?? const TextStyle(color: Colors.grey, fontFamily: 'Stars'),
-        prefixIcon: Icon(widget.icon ?? Icons.search ,
-          color: widget.iconColor ?? Colors.black45,
-          size: widget.iconSize ?? 24,
+        fillColor: fillColor ?? Colors.white,
+        hintStyle: hintStyle ?? const TextStyle(color: Colors.grey),
+        prefixIcon: Icon(
+          icon ?? Icons.search,
+          color: iconColor ?? Colors.black45,
+          size: iconSize ?? 24,
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(widget.borderRadius),
-          borderSide: BorderSide(color: widget.borderColor ?? Colors.transparent),
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(color: borderColor ?? Colors.transparent),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(color: borderColor ?? Colors.transparent),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(color: borderColor ?? Colors.blue),
         ),
       ),
     );

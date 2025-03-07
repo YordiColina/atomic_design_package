@@ -21,14 +21,16 @@ class AtomicButton extends StatelessWidget {
   final String label;
 
   /// La función de callback que se ejecuta cuando se presiona el botón.
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   /// El tamaño del botón, que afecta el padding y el tamaño de fuente.
   /// Por defecto, usa [ButtonSize.medium].
   final ButtonSize size;
+
   /// El color del botón.
   final Color? color;
-/// El color del texto del botón
+
+  /// El color del texto del botón
   final Color? textColor;
 
   /// Crea una instancia de [AtomicButton].
@@ -52,6 +54,16 @@ class AtomicButton extends StatelessWidget {
     }
   }
 
+  EdgeInsets _getEdgeInsets() {
+    double padding = _getPadding();
+    print('Vertical Padding: $padding, Horizontal Padding: $padding'); // Debug
+
+    return EdgeInsets.symmetric(
+      vertical: padding,
+      horizontal: padding, // Ahora horizontal es igual a vertical
+    );
+  }
+
   /// Devuelve el tamaño de fuente basado en el tamaño del botón.
   double _getFontSize() {
     switch (size) {
@@ -67,17 +79,21 @@ class AtomicButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(
-          vertical: _getPadding(),
-          horizontal: _getPadding() * 2,
+    final padding = _getEdgeInsets();
+    print('Botón ${size.toString()} - Padding: $padding');
+
+    return Padding(
+      padding: padding, // Asegura que se respete el padding
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          padding: EdgeInsets.zero, // Evita padding adicional inesperado
+          textStyle: TextStyle(fontSize: _getFontSize(), fontFamily: 'Stars'),
+          backgroundColor: color ?? const Color.fromRGBO(158, 123, 187, 1.0),
         ),
-        textStyle: TextStyle(fontSize: _getFontSize(),fontFamily: 'Stars'),
-        backgroundColor: color ?? const Color.fromRGBO(158, 123, 187, 1.0),
+        child: Text(label, style: TextStyle(
+            color: textColor ?? Colors.white, fontFamily: 'Stars')),
       ),
-      child: Text(label, style: TextStyle(color: textColor ?? Colors.white, fontFamily: 'Stars')),
     );
   }
 }

@@ -81,11 +81,11 @@ class AtomicDetailCard extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.network(
-                      imageUrl,
-                      width: 250,
-                      height: 250,
-                      fit: BoxFit.contain,
-                    ),
+                      imageUrl.isNotEmpty ? imageUrl : 'https://via.placeholder.com/150',
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.asset('assets/images/placeholder.png'); // Imagen local de respaldo
+                      },
+                    )
                   ),
                 ),
                 const SizedBox(height: 12),

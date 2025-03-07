@@ -102,12 +102,7 @@ class _AtomicFormState extends State<AtomicForm> {
     widget.onFieldsFilled(controllersValues);
   }
 
-  /// Valida el formulario y ejecuta la función onPressed si es válido.
-  void _handleButtonPress() {
-    if (_formKey.currentState!.validate()) {
-      widget.onPressed();
-    }
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +134,12 @@ class _AtomicFormState extends State<AtomicForm> {
 
             // 🔘 Botón para enviar el formulario
             AtomicButton(
-              onPressed: _handleButtonPress,
+              onPressed:  () {
+                if (_formKey.currentState!.validate()) {
+                  widget.onPressed();
+                }
+              },
+
               label: widget.buttonText,
               color: widget.buttonColor,
               textColor: widget.buttonTextColor,
